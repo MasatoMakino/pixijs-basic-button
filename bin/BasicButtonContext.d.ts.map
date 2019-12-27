@@ -1,0 +1,1 @@
+{"version":3,"file":"BasicButtonContext.d.ts","sourceRoot":"","sources":["../src/BasicButtonContext.ts"],"names":[],"mappings":"AAAA,qBAAa,kBAAkB;IACtB,KAAK,EAAG,MAAM,CAAC;IACf,WAAW,EAAE,GAAG,CAAQ;gBAEnB,KAAK,EAAE,GAAG;CAGvB;AAED,oBAAY,oBAAoB;IAC9B,QAAQ,wBAAwB;IAChC,UAAU,4BAA4B;CACvC"}
