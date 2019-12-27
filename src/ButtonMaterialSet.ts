@@ -22,17 +22,17 @@ class ButtonOptionSet<T> {
   ): T {
     switch (state) {
       case BasicButtonState.DISABLE:
-        return set.disable || set.normal;
+        return set.disable ?? set.normal;
       case BasicButtonState.NORMAL_OVER:
-        return set.over || set.normal;
+        return set.over ?? set.normal;
       case BasicButtonState.NORMAL_DOWN:
-        return set.down || set.normal;
+        return set.down ?? set.normal;
       case BasicButtonState.SELECT:
-        return set.selectNormal || set.normal;
+        return set.selectNormal ?? set.normal;
       case BasicButtonState.SELECT_OVER:
-        return set.selectOver || set.normal;
+        return set.selectOver ?? set.normal;
       case BasicButtonState.SELECT_DOWN:
-        return set.selectDown || set.normal;
+        return set.selectDown ?? set.normal;
       default:
         return set.normal;
     }
@@ -143,9 +143,8 @@ export class ButtonLabelColorSet extends ButtonOptionSet<number> {
   ): void {
     if (field == null) return;
 
-    const option = {
-      color: this.getMaterial(colors, state)
-    };
-    field.style.fill = option.color;
+    field.style.fill = this.getMaterial(colors, state);
+    field.cacheAsBitmap = false;
+    field.cacheAsBitmap = true;
   }
 }

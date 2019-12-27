@@ -1,5 +1,4 @@
-import { Container, Text, Rectangle } from "pixi.js";
-
+import { Container, Text } from "pixi.js";
 import { BasicButtonState } from "./BasicButtonState";
 import { ButtonMaterialSet, ButtonLabelColorSet } from "./ButtonMaterialSet";
 import InteractionEvent = PIXI.interaction.InteractionEvent;
@@ -64,7 +63,7 @@ export class BasicClickButton extends Container {
 
   /**
    * ボタンに状態マテリアルを設定する。
-   * @param {ButtonMaterialSet} materials
+   * @param materials
    */
   public initMaterial(materials: ButtonMaterialSet): void {
     //すでにmaterialが設定済みの場合、以前のマテリアルを削除する。
@@ -86,7 +85,7 @@ export class BasicClickButton extends Container {
 
   /**
    * 状態表示およびラベル文字色を、状態に応じて更新する。
-   * @param {BasicButtonState} state
+   * @param state
    */
   protected updateMaterialVisible(state: BasicButtonState) {
     ButtonMaterialSet.updateVisible(this.material, state);
@@ -98,7 +97,7 @@ export class BasicClickButton extends Container {
   /**
    * ボタン上でマウスダウンした際の処理。
    * 状態と表示を更新する。
-   * @param {createjs.MouseEvent} evt
+   * @param evt
    */
   public pressButton(evt?: InteractionEvent): void {
     if (!this.checkActivity()) return;
@@ -201,31 +200,31 @@ export class BasicClickButton extends Container {
    * @param x ラベル位置
    * @param y ラベル位置
    * @param label ラベルに表示する文言
-   * @param font フォント設定 createjs.Textのfont指定に準じる。
+   * @param style
    * @param color
-   * @param textAlign
    * @return テキストフィールドのインデックス値
    */
-  // public addLabel(
-  //   x: number,
-  //   y: number,
-  //   label: string,
-  //   font: string,
-  //   color: ButtonLabelColorSet,
-  //   textAlign?: string
-  // ): number {
-  //   this.labelColors.push(color);
-  //   const field = new createjs.Text("", font, color.normal);
-  //   this._labelField.push(field);
-  //   field.x = x;
-  //   field.y = y;
-  //   if (textAlign) field.textAlign = textAlign;
-  //   field.textBaseline = "alphabetic";
-  //   field.mouseEnabled = false;
-  //   CreatejsCacheUtil.cacheText(field, label);
-  //   this.addChild(field);
-  //   return this._labelField.indexOf(field);
-  // }
+  public addLabel(
+    x: number,
+    y: number,
+    label: string,
+    style: PIXI.TextStyle,
+    color: ButtonLabelColorSet
+  ): number {
+    this.labelColors.push(color);
+    style.fill = color.normal;
+    style.textBaseline = "ideographic";
+
+    const field = new Text(label, style);
+    this._labelField.push(field);
+    field.x = x;
+    field.y = y;
+    field.cacheAsBitmap = true;
+    field.interactive = field.interactiveChildren = false;
+
+    this.addChild(field);
+    return this._labelField.indexOf(field);
+  }
 
   /**
    * ボタンラベルに表示されている文言を取得する。
@@ -251,7 +250,12 @@ export class BasicClickButton extends Container {
       return;
     }
 
-    this._labelField[index].text = value;
+    const field = this._labelField[index];
+
+    if (field.text === value) return;
+    field.text = value;
+    field.cacheAsBitmap = false;
+    field.cacheAsBitmap = true;
   }
 
   public getLabelField(index: number): Text {
@@ -265,16 +269,5 @@ export class BasicClickButton extends Container {
     if (this._buttonValue != value) {
       this._buttonValue = value;
     }
-  }
-
-  /**
-   * 当たり判定の矩形を指定する。
-   * @param x
-   * @param y
-   * @param w
-   * @param h
-   */
-  public initHitRect(x: number, y: number, w: number, h: number): void {
-    this.hitArea = new Rectangle(x, y, w, h);
   }
 }
