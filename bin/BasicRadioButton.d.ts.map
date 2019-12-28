@@ -1,0 +1,1 @@
+{"version":3,"file":"BasicRadioButton.d.ts","sourceRoot":"","sources":["../src/BasicRadioButton.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,oBAAoB,CAAC;AAGtD,OAAO,gBAAgB,GAAG,IAAI,CAAC,WAAW,CAAC,gBAAgB,CAAC;AAE5D;;GAEG;AACH,qBAAa,gBAAiB,SAAQ,gBAAgB;IACpD;;;OAGG;IACI,YAAY,CAAC,GAAG,CAAC,EAAE,gBAAgB,GAAG,IAAI;IAajD;;;;OAIG;IACH,SAAS,CAAC,aAAa,IAAI,OAAO;CAInC"}

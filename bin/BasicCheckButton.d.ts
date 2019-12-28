@@ -12,7 +12,7 @@ export declare class BasicCheckButton extends BasicClickButton {
     outButton(evt?: InteractionEvent): void;
     /**
      * ボタンを選択する。
-     * @param { InteractionEvent} evt
+     * @param evt
      */
     selectButton(evt?: InteractionEvent): void;
     /**

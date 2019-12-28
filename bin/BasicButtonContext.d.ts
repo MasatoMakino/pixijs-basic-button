@@ -1,7 +1,9 @@
+import { BasicClickButton } from "./BasicClickButton";
 export declare class BasicButtonContext {
     index: number;
     buttonValue: any;
-    constructor(value: any);
+    target: BasicClickButton;
+    constructor(target: BasicClickButton, value: any);
 }
 export declare enum BasicButtonEventType {
     SELECTED = "button_event_select",

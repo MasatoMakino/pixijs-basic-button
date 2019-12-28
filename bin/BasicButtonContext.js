@@ -1,6 +1,7 @@
 export class BasicButtonContext {
-    constructor(value) {
+    constructor(target, value) {
         this.buttonValue = null;
+        this.target = target;
         this.buttonValue = value;
     }
 }
