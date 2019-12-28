@@ -52,7 +52,7 @@ export class BasicCheckButton extends BasicClickButton {
 
   /**
    * ボタンを選択する。
-   * @param { InteractionEvent} evt
+   * @param evt
    */
   public selectButton(evt?: InteractionEvent): void {
     if (this._isSelect) return;
@@ -65,7 +65,7 @@ export class BasicCheckButton extends BasicClickButton {
       this.updateMaterialVisible(state);
     }
 
-    const buttonEvt = new BasicButtonContext(this.buttonValue);
+    const buttonEvt = new BasicButtonContext(this, this.buttonValue);
     this.emit(BasicButtonEventType.SELECTED, buttonEvt);
   }
 
@@ -84,7 +84,7 @@ export class BasicCheckButton extends BasicClickButton {
     }
     this._isSelect = false;
 
-    const buttonEvt = new BasicButtonContext(this.buttonValue);
+    const buttonEvt = new BasicButtonContext(this, this.buttonValue);
     this.emit(BasicButtonEventType.UNSELECTED, buttonEvt);
   }
 
