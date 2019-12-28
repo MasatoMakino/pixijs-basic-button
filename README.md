@@ -8,7 +8,7 @@ Interactive button library for pixi.js
 
 ## Demo
 
-[Demo Page](https://masatomakino.github.io/pixijs-basic-button/demo/index.html)
+[Demo Page](https://masatomakino.github.io/pixijs-basic-button/demo/)
 
 ## Getting Started
 
