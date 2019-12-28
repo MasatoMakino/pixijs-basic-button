@@ -12,12 +12,13 @@ import { Application, Graphics } from "pixi.js";
  * デモに必要なパーツを一式初期化する。
  */
 const onDomContentsLoaded = () => {
-  const app = new Application({ width: 640, height: 480 });
+  const app = new Application({ width: 800, height: 600 });
   document.body.appendChild(app.view);
 
   initButton(app.stage);
   initCheckButton(app.stage);
   initRadioButton(app.stage);
+  initRadioMarkerButton(app.stage);
 };
 
 const initButton = stage => {
@@ -56,10 +57,33 @@ const initRadioButton = stage => {
   }
 
   manager.selected = manager.buttons[0];
+  manager.on(BasicButtonEventType.SELECTED, e => {
+    console.log(e);
+  });
 };
 
-const getMaterialSet = () => {
-  return {
+const initRadioMarkerButton = stage => {
+  const manager = new BasicRadioButtonManager();
+
+  const n = 4;
+  for (let i = 0; i < n; i++) {
+    const buttonRadio = new BasicRadioButton(getMaterialSet(true));
+    buttonRadio.y = 196;
+    buttonRadio.x = 36 + (128 + 36) * i;
+    addLabel(buttonRadio);
+    buttonRadio.buttonValue = "__button__val__test__" + i;
+    stage.addChild(buttonRadio);
+    manager.add(buttonRadio);
+  }
+
+  manager.selected = manager.buttons[0];
+  manager.on(BasicButtonEventType.SELECTED, e => {
+    console.log(e);
+  });
+};
+
+const getMaterialSet = (hasMarker = false) => {
+  const mat = {
     normal: getRect(0xff00ff),
     over: getRect(0xff66ff),
     down: getRect(0xffffff),
@@ -67,6 +91,11 @@ const getMaterialSet = () => {
     selectOver: getRect(0x442244),
     selectDown: getRect(0x333333)
   };
+  if (hasMarker) {
+    console.log(hasMarker);
+    mat.selectMarker = getMarker();
+  }
+  return mat;
 };
 
 const getRect = color => {
@@ -93,6 +122,14 @@ const addLabel = btn => {
       selectDown: 0x999999
     }
   );
+};
+
+const getMarker = () => {
+  const g = new Graphics();
+  g.beginFill(0xff0000)
+    .drawCircle(0, 0, 8)
+    .endFill();
+  return g;
 };
 
 /**
