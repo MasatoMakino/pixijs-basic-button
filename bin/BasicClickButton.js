@@ -1,6 +1,7 @@
 import { Container, Text } from "pixi.js";
 import { BasicButtonState } from "./BasicButtonState";
 import { ButtonMaterialSet, ButtonLabelColorSet } from "./ButtonMaterialSet";
+import { PixiJSCacheUtil } from "pixijs-cache-util";
 /**
  * 基本ボタンクラス。
  * 選択状態を持たず、クリックした時点で結果が反映されるタイプのボタンです。
@@ -219,9 +220,7 @@ export class BasicClickButton extends Container {
         const field = this._labelField[index];
         if (field.text === value)
             return;
-        field.text = value;
-        field.cacheAsBitmap = false;
-        field.cacheAsBitmap = true;
+        PixiJSCacheUtil.updateText({ target: field, text: value });
     }
     getLabelField(index) {
         return this._labelField[index];
