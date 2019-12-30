@@ -1,6 +1,6 @@
 {
   "name": "pixijs-basic-button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Interactive button library for pixi.js",
   "main": "./bin/index.js",
   "repository": "https://MasatoMakino@github.com/MasatoMakino/pixijs-basic-button.git",
@@ -20,6 +20,9 @@
     "pretty-quick": "^2.0.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "pixijs-cache-util": "https://github.com/MasatoMakino/pixijs-cache-util.git"
   },
   "peerDependencies": {
     "pixi.js": "^5.2.0"

@@ -24,7 +24,8 @@ const onDomContentsLoaded = () => {
 const initButton = stage => {
   const button = new BasicClickButton(getMaterialSet());
   button.x = button.y = 36;
-  addLabel(button);
+  const index = addLabel(button);
+  button.setLabel(index, "Abcあ");
   stage.addChild(button);
 };
 
@@ -108,7 +109,7 @@ const getRect = color => {
 };
 
 const addLabel = btn => {
-  btn.addLabel(
+  return btn.addLabel(
     0,
     0,
     "Abcdefghijklあ",

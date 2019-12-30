@@ -2,6 +2,7 @@ import { Container, Text } from "pixi.js";
 import { BasicButtonState } from "./BasicButtonState";
 import { ButtonMaterialSet, ButtonLabelColorSet } from "./ButtonMaterialSet";
 import InteractionEvent = PIXI.interaction.InteractionEvent;
+import { PixiJSCacheUtil } from "pixijs-cache-util";
 
 /**
  * 基本ボタンクラス。
@@ -253,9 +254,7 @@ export class BasicClickButton extends Container {
     const field = this._labelField[index];
 
     if (field.text === value) return;
-    field.text = value;
-    field.cacheAsBitmap = false;
-    field.cacheAsBitmap = true;
+    PixiJSCacheUtil.updateText({ target: field, text: value });
   }
 
   public getLabelField(index: number): Text {
