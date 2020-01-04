@@ -3,6 +3,7 @@
 Interactive button library for pixi.js
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Maintainability](https://api.codeclimate.com/v1/badges/53987c65647c8bb04eba/maintainability)](https://codeclimate.com/github/MasatoMakino/pixijs-basic-button/maintainability)
 
 [Github repository](https://github.com/MasatoMakino/pixijs-basic-button)
 
