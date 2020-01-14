@@ -1,24 +1,30 @@
 {
   "name": "pixijs-basic-button",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Interactive button library for pixi.js",
-  "main": "./bin/index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "module": "./esm/index.js",
+  "files": [
+    "lib",
+    "esm"
+  ],
   "repository": "https://MasatoMakino@github.com/MasatoMakino/pixijs-basic-button.git",
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^13.1.0",
+    "@types/node": "^13.1.6",
     "dat.gui": "^0.7.6",
     "gulp": "^4.0.2",
     "gulptask-demo-page": "https://github.com/MasatoMakino/gulptask-demo-page.git",
     "gulptask-dev-server": "https://github.com/MasatoMakino/gulptask-dev-server.git",
     "gulptask-tsc": "https://github.com/MasatoMakino/gulptask-tsc.git",
     "gulptask-tsdoc": "https://github.com/MasatoMakino/gulptask-tsdoc.git",
-    "husky": "^3.1.0",
+    "husky": "^4.0.7",
     "pixi.js": "^5.2.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
-    "ts-node": "^8.5.4",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.4"
   },
   "dependencies": {
