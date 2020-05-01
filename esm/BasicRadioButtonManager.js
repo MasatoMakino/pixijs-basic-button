@@ -15,137 +15,132 @@ import * as PIXI from "pixi.js";
  * manager.selected = btn; //デフォルトで選択されているボタンを指定
  */
 export class BasicRadioButtonManager extends PIXI.utils.EventEmitter {
-  constructor() {
-    super(...arguments);
-    this._buttons = [];
-    this._selected = null;
-  }
-  /**
-   * ラジオボタンのグループにボタンを追加する。
-   * @param {BasicRadioButton} button
-   */
-  add(button) {
-    this._buttons.push(button);
-    button.on(BasicButtonEventType.SELECTED, e => {
-      const ctx = e;
-      this.deselectOthers(ctx.target);
-    });
-  }
-  /**
-   * ボタンを選択する。
-   * nullを引数に取ると全ての選択を解除する。
-   * @param {BasicRadioButton} selectedButton
-   */
-  set selected(selectedButton) {
-    this._selected = selectedButton;
-    if (selectedButton == null) {
-      this.deselectAllButtons();
-      return;
+    constructor() {
+        super(...arguments);
+        this._buttons = [];
+        this._selected = null;
     }
-    //選択されたボタンがこのインスタンスの管理下か確認する。
-    const index = this._buttons.indexOf(selectedButton);
-    if (index === -1) {
-      console.warn(
-        "BasicRadioButtonManager : " +
-          "選択対象として指定されたボタンが、BasicRadioButtonManagerの管理下にありません。" +
-          "指定を行う前にaddButton関数でボタンをBasicRadioButtonManagerに登録してください。"
-      );
-      return;
+    /**
+     * ラジオボタンのグループにボタンを追加する。
+     * @param {BasicRadioButton} button
+     */
+    add(button) {
+        this._buttons.push(button);
+        button.on(BasicButtonEventType.SELECTED, (e) => {
+            const ctx = e;
+            this.deselectOthers(ctx.target);
+        });
     }
-    selectedButton.selectButton();
-  }
-  /**
-   * 選択済みのボタンを取得する。
-   * 選択されていない場合はnullを返す。
-   * @returns {BasicRadioButton | null}
-   */
-  get selected() {
-    return this._selected;
-  }
-  /**
-   * 指定されたボタン以外の選択を解除し、BasicRadioButtonManagerからSELECTEDイベントを発行する。
-   * @param {BasicRadioButton} selectedButton
-   * @param {boolean} isDispatchSelectEvent
-   */
-  deselectOthers(selectedButton, isDispatchSelectEvent = true) {
-    this._selected = selectedButton;
-    for (let btn of this._buttons) {
-      if (btn != selectedButton) {
-        btn.deselectButton();
-      }
+    /**
+     * ボタンを選択する。
+     * nullを引数に取ると全ての選択を解除する。
+     * @param {BasicRadioButton} selectedButton
+     */
+    set selected(selectedButton) {
+        this._selected = selectedButton;
+        if (selectedButton == null) {
+            this.deselectAllButtons();
+            return;
+        }
+        //選択されたボタンがこのインスタンスの管理下か確認する。
+        const index = this._buttons.indexOf(selectedButton);
+        if (index === -1) {
+            console.warn("BasicRadioButtonManager : " +
+                "選択対象として指定されたボタンが、BasicRadioButtonManagerの管理下にありません。" +
+                "指定を行う前にaddButton関数でボタンをBasicRadioButtonManagerに登録してください。");
+            return;
+        }
+        selectedButton.selectButton();
     }
-    if (isDispatchSelectEvent) {
-      const evt = new BasicButtonContext(
-        this._selected,
-        this._selected.buttonValue
-      );
-      evt.index = this._buttons.indexOf(this._selected);
-      this.emit(BasicButtonEventType.SELECTED, evt);
+    /**
+     * 選択済みのボタンを取得する。
+     * 選択されていない場合はnullを返す。
+     * @returns {BasicRadioButton | null}
+     */
+    get selected() {
+        return this._selected;
     }
-  }
-  /**
-   * 管理下の全てのボタンの選択を解除する。
-   */
-  deselectAllButtons() {
-    this._selected = null;
-    for (let btn of this._buttons) {
-      btn.deselectButton();
+    /**
+     * 指定されたボタン以外の選択を解除し、BasicRadioButtonManagerからSELECTEDイベントを発行する。
+     * @param {BasicRadioButton} selectedButton
+     * @param {boolean} isDispatchSelectEvent
+     */
+    deselectOthers(selectedButton, isDispatchSelectEvent = true) {
+        this._selected = selectedButton;
+        for (let btn of this._buttons) {
+            if (btn != selectedButton) {
+                btn.deselectButton();
+            }
+        }
+        if (isDispatchSelectEvent) {
+            const evt = new BasicButtonContext(this._selected, this._selected.buttonValue);
+            evt.index = this._buttons.indexOf(this._selected);
+            this.emit(BasicButtonEventType.SELECTED, evt);
+        }
     }
-    const evt = new BasicButtonContext(null, null);
-    this.emit(BasicButtonEventType.UNSELECTED, evt);
-  }
-  disableAll() {
-    for (let btn of this._buttons) {
-      btn.disableButton();
+    /**
+     * 管理下の全てのボタンの選択を解除する。
+     */
+    deselectAllButtons() {
+        this._selected = null;
+        for (let btn of this._buttons) {
+            btn.deselectButton();
+        }
+        const evt = new BasicButtonContext(null, null);
+        this.emit(BasicButtonEventType.UNSELECTED, evt);
     }
-  }
-  disableMouseAll() {
-    for (let btn of this._buttons) {
-      btn.interactive = false;
+    disableAll() {
+        for (let btn of this._buttons) {
+            btn.disableButton();
+        }
     }
-  }
-  enableAll() {
-    for (let btn of this._buttons) {
-      btn.enableButton();
+    disableMouseAll() {
+        for (let btn of this._buttons) {
+            btn.interactive = false;
+        }
     }
-  }
-  enableMouseAll() {
-    for (let btn of this._buttons) {
-      btn.interactive = true;
+    enableAll() {
+        for (let btn of this._buttons) {
+            btn.enableButton();
+        }
     }
-  }
-  /**
-   * 現在選択されているボタンのbuttonValueを取得する。
-   * 選択されたボタンがない場合はnullを返す。
-   * @returns {any}
-   */
-  get selectedButtonValue() {
-    const btn = this.selected;
-    if (btn) {
-      return btn.buttonValue;
+    enableMouseAll() {
+        for (let btn of this._buttons) {
+            btn.interactive = true;
+        }
     }
-    return null;
-  }
-  /**
-   * このインスタンスで管理をしているラジオボタンの配列を取得する。
-   * @returns {BasicRadioButton[]}
-   */
-  get buttons() {
-    return this._buttons;
-  }
-  /**
-   * buttonValueを検索キーとして、該当するボタンを取得する。
-   * 該当するボタンがない場合はnullを返す。
-   *
-   * @param value
-   * @returns {BasicRadioButton | null}
-   */
-  getButton(value) {
-    for (let btn of this._buttons) {
-      if (btn.buttonValue === value && btn.buttonValue != null) {
-        return btn;
-      }
+    /**
+     * 現在選択されているボタンのbuttonValueを取得する。
+     * 選択されたボタンがない場合はnullを返す。
+     * @returns {any}
+     */
+    get selectedButtonValue() {
+        const btn = this.selected;
+        if (btn) {
+            return btn.buttonValue;
+        }
+        return null;
     }
-    return null;
-  }
+    /**
+     * このインスタンスで管理をしているラジオボタンの配列を取得する。
+     * @returns {BasicRadioButton[]}
+     */
+    get buttons() {
+        return this._buttons;
+    }
+    /**
+     * buttonValueを検索キーとして、該当するボタンを取得する。
+     * 該当するボタンがない場合はnullを返す。
+     *
+     * @param value
+     * @returns {BasicRadioButton | null}
+     */
+    getButton(value) {
+        for (let btn of this._buttons) {
+            if (btn.buttonValue === value && btn.buttonValue != null) {
+                return btn;
+            }
+        }
+        return null;
+    }
 }

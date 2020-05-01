@@ -15,60 +15,57 @@ import * as PIXI from "pixi.js";
  * manager.selected = btn; //デフォルトで選択されているボタンを指定
  */
 export declare class BasicRadioButtonManager extends PIXI.utils.EventEmitter {
-  protected _buttons: BasicRadioButton[];
-  protected _selected?: BasicRadioButton;
-  /**
-   * ラジオボタンのグループにボタンを追加する。
-   * @param {BasicRadioButton} button
-   */
-  add(button: BasicRadioButton): void;
-  /**
-   * ボタンを選択する。
-   * nullを引数に取ると全ての選択を解除する。
-   * @param {BasicRadioButton} selectedButton
-   */
-  set selected(selectedButton: BasicRadioButton);
-  /**
-   * 選択済みのボタンを取得する。
-   * 選択されていない場合はnullを返す。
-   * @returns {BasicRadioButton | null}
-   */
-  get selected(): BasicRadioButton | null;
-  /**
-   * 指定されたボタン以外の選択を解除し、BasicRadioButtonManagerからSELECTEDイベントを発行する。
-   * @param {BasicRadioButton} selectedButton
-   * @param {boolean} isDispatchSelectEvent
-   */
-  protected deselectOthers(
-    selectedButton: BasicRadioButton,
-    isDispatchSelectEvent?: boolean
-  ): void;
-  /**
-   * 管理下の全てのボタンの選択を解除する。
-   */
-  deselectAllButtons(): void;
-  disableAll(): void;
-  disableMouseAll(): void;
-  enableAll(): void;
-  enableMouseAll(): void;
-  /**
-   * 現在選択されているボタンのbuttonValueを取得する。
-   * 選択されたボタンがない場合はnullを返す。
-   * @returns {any}
-   */
-  get selectedButtonValue(): any;
-  /**
-   * このインスタンスで管理をしているラジオボタンの配列を取得する。
-   * @returns {BasicRadioButton[]}
-   */
-  get buttons(): BasicRadioButton[];
-  /**
-   * buttonValueを検索キーとして、該当するボタンを取得する。
-   * 該当するボタンがない場合はnullを返す。
-   *
-   * @param value
-   * @returns {BasicRadioButton | null}
-   */
-  getButton(value: any): BasicRadioButton | null;
+    protected _buttons: BasicRadioButton[];
+    protected _selected?: BasicRadioButton;
+    /**
+     * ラジオボタンのグループにボタンを追加する。
+     * @param {BasicRadioButton} button
+     */
+    add(button: BasicRadioButton): void;
+    /**
+     * ボタンを選択する。
+     * nullを引数に取ると全ての選択を解除する。
+     * @param {BasicRadioButton} selectedButton
+     */
+    set selected(selectedButton: BasicRadioButton);
+    /**
+     * 選択済みのボタンを取得する。
+     * 選択されていない場合はnullを返す。
+     * @returns {BasicRadioButton | null}
+     */
+    get selected(): BasicRadioButton | null;
+    /**
+     * 指定されたボタン以外の選択を解除し、BasicRadioButtonManagerからSELECTEDイベントを発行する。
+     * @param {BasicRadioButton} selectedButton
+     * @param {boolean} isDispatchSelectEvent
+     */
+    protected deselectOthers(selectedButton: BasicRadioButton, isDispatchSelectEvent?: boolean): void;
+    /**
+     * 管理下の全てのボタンの選択を解除する。
+     */
+    deselectAllButtons(): void;
+    disableAll(): void;
+    disableMouseAll(): void;
+    enableAll(): void;
+    enableMouseAll(): void;
+    /**
+     * 現在選択されているボタンのbuttonValueを取得する。
+     * 選択されたボタンがない場合はnullを返す。
+     * @returns {any}
+     */
+    get selectedButtonValue(): any;
+    /**
+     * このインスタンスで管理をしているラジオボタンの配列を取得する。
+     * @returns {BasicRadioButton[]}
+     */
+    get buttons(): BasicRadioButton[];
+    /**
+     * buttonValueを検索キーとして、該当するボタンを取得する。
+     * 該当するボタンがない場合はnullを返す。
+     *
+     * @param value
+     * @returns {BasicRadioButton | null}
+     */
+    getButton(value: any): BasicRadioButton | null;
 }
 //# sourceMappingURL=BasicRadioButtonManager.d.ts.map
