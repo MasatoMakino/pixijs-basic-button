@@ -1,7 +1,8 @@
-import { BasicClickButton } from "./BasicClickButton";
-import { BasicButtonState } from "./BasicButtonState";
+import { InteractionEvent } from "pixi.js";
 import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
-import InteractionEvent = PIXI.interaction.InteractionEvent;
+import { BasicButtonState } from "./BasicButtonState";
+import { BasicClickButton } from "./BasicClickButton";
+
 /**
  * 選択状態を持つボタンクラス。
  */

@@ -1,8 +1,7 @@
-import { Container, Text } from "pixi.js";
-import { BasicButtonState } from "./BasicButtonState";
-import { ButtonMaterialSet, ButtonLabelColorSet } from "./ButtonMaterialSet";
-import InteractionEvent = PIXI.interaction.InteractionEvent;
+import { Container, InteractionEvent, Text } from "pixi.js";
 import { PixiJSCacheUtil } from "pixijs-cache-util";
+import { BasicButtonState } from "./BasicButtonState";
+import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
 
 /**
  * 基本ボタンクラス。
@@ -78,7 +77,7 @@ export class BasicClickButton extends Container {
     this.updateMaterialVisible(this.getButtonState());
 
     //テキストラベルがあったら最前線に。
-    this._labelField.forEach(label => {
+    this._labelField.forEach((label) => {
       this.removeChild(label);
       this.addChild(label);
     });
