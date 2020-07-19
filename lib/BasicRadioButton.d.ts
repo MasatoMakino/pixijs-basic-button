@@ -1,5 +1,6 @@
-import { BasicCheckButton } from "./BasicCheckButton";
-import InteractionEvent = PIXI.interaction.InteractionEvent;
+import {InteractionEvent} from "pixi.js";
+import {BasicCheckButton} from "./BasicCheckButton";
+
 /**
  * 排他的に選択可能なボタン。ラジオボタンのセットはBasicRadioButtonManagerで設定する。
  */

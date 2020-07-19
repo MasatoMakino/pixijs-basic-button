@@ -1,7 +1,8 @@
-import { Container, Text } from "pixi.js";
-import { BasicButtonState } from "./BasicButtonState";
-import { ButtonMaterialSet, ButtonLabelColorSet } from "./ButtonMaterialSet";
-import { PixiJSCacheUtil } from "pixijs-cache-util";
+import {Container, Text} from "pixi.js";
+import {PixiJSCacheUtil} from "pixijs-cache-util";
+import {BasicButtonState} from "./BasicButtonState";
+import {ButtonLabelColorSet, ButtonMaterialSet} from "./ButtonMaterialSet";
+
 /**
  * 基本ボタンクラス。
  * 選択状態を持たず、クリックした時点で結果が反映されるタイプのボタンです。
@@ -66,7 +67,7 @@ export class BasicClickButton extends Container {
         ButtonMaterialSet.addChild(this, materials);
         this.updateMaterialVisible(this.getButtonState());
         //テキストラベルがあったら最前線に。
-        this._labelField.forEach(label => {
+        this._labelField.forEach((label) => {
             this.removeChild(label);
             this.addChild(label);
         });

@@ -1,7 +1,7 @@
-import { Container, Text } from "pixi.js";
-import { BasicButtonState } from "./BasicButtonState";
-import { ButtonMaterialSet, ButtonLabelColorSet } from "./ButtonMaterialSet";
-import InteractionEvent = PIXI.interaction.InteractionEvent;
+import {Container, InteractionEvent, Text} from "pixi.js";
+import {BasicButtonState} from "./BasicButtonState";
+import {ButtonLabelColorSet, ButtonMaterialSet} from "./ButtonMaterialSet";
+
 /**
  * 基本ボタンクラス。
  * 選択状態を持たず、クリックした時点で結果が反映されるタイプのボタンです。

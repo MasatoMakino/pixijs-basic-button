@@ -1,6 +1,7 @@
-import { BasicCheckButton } from "./BasicCheckButton";
-import { BasicButtonState } from "./BasicButtonState";
-import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
+import {BasicButtonContext, BasicButtonEventType} from "./BasicButtonContext";
+import {BasicButtonState} from "./BasicButtonState";
+import {BasicCheckButton} from "./BasicCheckButton";
+
 /**
  * 排他的に選択可能なボタン。ラジオボタンのセットはBasicRadioButtonManagerで設定する。
  */
