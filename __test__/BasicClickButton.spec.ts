@@ -1,7 +1,7 @@
 import { BasicClickButton } from "../src";
 import { getTestMaterialSet } from "./TestMaterial";
 
-describe("ButtonMaterialSet", () => {
+describe("BasicClickButton", () => {
   const mat = getTestMaterialSet();
   const button = new BasicClickButton(mat);
 

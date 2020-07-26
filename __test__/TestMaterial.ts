@@ -1,5 +1,5 @@
 import { DisplayObject, Graphics } from "pixi.js";
-import { ButtonMaterialSet } from "../src";
+import { ButtonLabelColorSet, ButtonMaterialSet } from "../src";
 
 /**
  * テスト用の共通マテリアルを生成する
@@ -42,4 +42,17 @@ function getRect(color: number, alpha: number = 1.0): DisplayObject {
   g.beginFill(color).drawRect(0, 0, 128, 32).endFill();
   g.alpha = alpha;
   return g;
+}
+
+export function getTestLabelColorSet() {
+  const mat = new ButtonLabelColorSet();
+  mat.down = TestMaterialColor.down;
+  mat.over = TestMaterialColor.over;
+  mat.disable = TestMaterialColor.disable;
+
+  mat.selectNormal = TestMaterialColor.selectNormal;
+  mat.selectDown = TestMaterialColor.selectDown;
+  mat.selectOver = TestMaterialColor.selectOver;
+
+  return mat;
 }
