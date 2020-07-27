@@ -3,10 +3,13 @@ import { getTestMaterialSet } from "./TestMaterial";
 
 describe("BasicClickButton", () => {
   const mat = getTestMaterialSet();
-  const button = new BasicClickButton(mat);
+  const dummyMat = getTestMaterialSet();
+  const button = new BasicClickButton(dummyMat);
+  button.initMaterial(mat);
 
   test("constructor", () => {
     expect(button).toBeTruthy();
+    expect(button.frozen).toBe(false);
   });
 
   test("change state : enable", () => {
