@@ -67,10 +67,10 @@ describe("ButtonMaterialSet", () => {
   });
 });
 
-const testMaterialVisible = (
+export function testMaterialVisible(
   mat: ButtonMaterialSet,
   state: BasicButtonState
-) => {
+): void {
   expect(mat.normal.visible).toBe(state === BasicButtonState.NORMAL);
   expect(mat.over?.visible).toBe(state === BasicButtonState.NORMAL_OVER);
   expect(mat.down?.visible).toBe(state === BasicButtonState.NORMAL_DOWN);
@@ -79,4 +79,4 @@ const testMaterialVisible = (
   expect(mat.selectNormal?.visible).toBe(state === BasicButtonState.SELECT);
   expect(mat.selectDown?.visible).toBe(state === BasicButtonState.SELECT_DOWN);
   expect(mat.selectOver?.visible).toBe(state === BasicButtonState.SELECT_OVER);
-};
+}
