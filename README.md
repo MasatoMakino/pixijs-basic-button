@@ -1,9 +1,11 @@
 # pixijs-basic-button
 
-Interactive button library for pixi.js
+> Interactive button library for pixi.js
 
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Build Status](https://travis-ci.org/MasatoMakino/pixijs-basic-button.svg?branch=master)](https://travis-ci.org/MasatoMakino/pixijs-basic-button)
 [![Maintainability](https://api.codeclimate.com/v1/badges/53987c65647c8bb04eba/maintainability)](https://codeclimate.com/github/MasatoMakino/pixijs-basic-button/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/53987c65647c8bb04eba/test_coverage)](https://codeclimate.com/github/MasatoMakino/pixijs-basic-button/test_coverage)
 
 [Github repository](https://github.com/MasatoMakino/pixijs-basic-button)
 
@@ -41,7 +43,7 @@ import { BasicClickButton } from "pixijs-basic-button";
 
 ```js
 const button = new BasicClickButton({
-  normal: new PIXI.Sprite(Texture.from(bitmapURL))
+  normal: new PIXI.Sprite(Texture.from(bitmapURL)),
 });
 stage.addChild(button);
 ```
