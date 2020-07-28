@@ -1,6 +1,5 @@
 import { BasicButtonState, BasicRadioButton } from "../src";
-import { testMaterialVisible } from "./ButtonMaterialSet.spec";
-import { getTestMaterialSet } from "./TestMaterial";
+import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicRadioButton", () => {
   const mat = getTestMaterialSet();

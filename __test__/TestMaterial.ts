@@ -1,5 +1,9 @@
 import { DisplayObject, Graphics } from "pixi.js";
-import { ButtonLabelColorSet, ButtonMaterialSet } from "../src";
+import {
+  BasicButtonState,
+  ButtonLabelColorSet,
+  ButtonMaterialSet,
+} from "../src";
 
 /**
  * テスト用の共通マテリアルを生成する
@@ -55,4 +59,17 @@ export function getTestLabelColorSet() {
   mat.selectOver = TestMaterialColor.selectOver;
 
   return mat;
+}
+export function testMaterialVisible(
+  mat: ButtonMaterialSet,
+  state: BasicButtonState
+): void {
+  expect(mat.normal.visible).toBe(state === BasicButtonState.NORMAL);
+  expect(mat.over?.visible).toBe(state === BasicButtonState.NORMAL_OVER);
+  expect(mat.down?.visible).toBe(state === BasicButtonState.NORMAL_DOWN);
+  expect(mat.disable?.visible).toBe(state === BasicButtonState.DISABLE);
+
+  expect(mat.selectNormal?.visible).toBe(state === BasicButtonState.SELECT);
+  expect(mat.selectDown?.visible).toBe(state === BasicButtonState.SELECT_DOWN);
+  expect(mat.selectOver?.visible).toBe(state === BasicButtonState.SELECT_OVER);
 }

@@ -1,5 +1,5 @@
-import { BasicClickButton } from "../src";
-import { getTestMaterialSet } from "./TestMaterial";
+import { BasicButtonState, BasicClickButton } from "../src";
+import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicClickButton", () => {
   const mat = getTestMaterialSet();
@@ -14,7 +14,8 @@ describe("BasicClickButton", () => {
 
   test("change state : enable", () => {
     button.emit("pointerover");
-    expect(mat.over.visible).toBeTruthy();
+    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    // expect(mat.over.visible).toBeTruthy();
 
     button.emit("pointerout");
     expect(mat.normal.visible).toBeTruthy();
