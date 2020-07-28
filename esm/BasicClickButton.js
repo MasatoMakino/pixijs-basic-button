@@ -218,6 +218,10 @@ export class BasicClickButton extends Container {
                 "文言を指定する前にラベルの初期化をaddLabel関数で行ってください。");
             return;
         }
+        if (this._labelField[index] === undefined) {
+            console.warn("BasicButton : " + `指定されたindex : ${index}にラベルが存在しません。`);
+            return;
+        }
         const field = this._labelField[index];
         if (field.text === value)
             return;
