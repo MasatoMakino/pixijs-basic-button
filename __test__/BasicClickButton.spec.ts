@@ -15,18 +15,14 @@ describe("BasicClickButton", () => {
   test("change state : enable", () => {
     button.emit("pointerover");
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
-    // expect(mat.over.visible).toBeTruthy();
-
     button.emit("pointerout");
-    expect(mat.normal.visible).toBeTruthy();
-
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
     button.emit("pointerdown");
-    expect(mat.down.visible).toBeTruthy();
+    testMaterialVisible(mat, BasicButtonState.NORMAL_DOWN);
 
     //pointerOut後にupした場合はnormal
     button.emit("pointerup");
-    expect(mat.normal.visible).toBeTruthy();
-    expect(mat.over.visible).toBeFalsy();
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
   });
 
   test("change state : mouse over", () => {
@@ -41,20 +37,15 @@ describe("BasicClickButton", () => {
   test("change state : disable", () => {
     button.disableButton();
     button.emit("pointerover");
-    expect(mat.normal.visible).toBe(false);
-    expect(mat.disable.visible).toBe(true);
+    testMaterialVisible(mat, BasicButtonState.DISABLE);
     button.emit("pointerout");
-    expect(mat.normal.visible).toBe(false);
-    expect(mat.disable.visible).toBe(true);
+    testMaterialVisible(mat, BasicButtonState.DISABLE);
     button.emit("pointerdown");
-    expect(mat.normal.visible).toBe(false);
-    expect(mat.disable.visible).toBe(true);
+    testMaterialVisible(mat, BasicButtonState.DISABLE);
     button.emit("pointerup");
-    expect(mat.normal.visible).toBe(false);
-    expect(mat.disable.visible).toBe(true);
+    testMaterialVisible(mat, BasicButtonState.DISABLE);
     button.enableButton();
-    expect(mat.normal.visible).toBe(true);
-    expect(mat.disable.visible).toBe(false);
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
   });
 
   test("change state : frozen", () => {
@@ -62,19 +53,15 @@ describe("BasicClickButton", () => {
     button.frozen = true;
 
     button.emit("pointerover");
-    expect(mat.normal.visible).toBe(true);
-    expect(mat.over.visible).toBe(false);
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
     button.emit("pointerout");
-    expect(mat.normal.visible).toBe(true);
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
     button.emit("pointerdown");
-    expect(mat.normal.visible).toBe(true);
-    expect(mat.down.visible).toBe(false);
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
     button.emit("pointerup");
-    expect(mat.normal.visible).toBe(true);
-    expect(mat.disable.visible).toBe(false);
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
 
     button.frozen = false;
-    expect(mat.normal.visible).toBe(true);
-    expect(mat.disable.visible).toBe(false);
+    testMaterialVisible(mat, BasicButtonState.NORMAL);
   });
 });
