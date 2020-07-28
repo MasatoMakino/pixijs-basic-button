@@ -9,7 +9,7 @@ describe("BasicRadioButtonManager", () => {
   const spyWarn = jest.spyOn(console, "warn");
   spyWarn.mockImplementation((x) => x);
 
-  const values = [0, "", null, { x: 0 }];
+  const values = [0, "", null, { x: 0 }, undefined];
   const manager = new BasicRadioButtonManager();
   values.forEach((val) => {
     manager.add(getRadioButton(val));
@@ -67,6 +67,35 @@ describe("BasicRadioButtonManager", () => {
       expect(btn.getButtonState()).toBe(BasicButtonState.NORMAL);
     });
   });
+
+  test("disable mouse all", () => {
+    resetManager(manager);
+    manager.disableMouseAll();
+    manager.buttons.forEach((btn) => {
+      expect(btn.interactive).toBe(false);
+    });
+  });
+
+  test("enable mouse all", () => {
+    resetManager(manager);
+    manager.enableMouseAll();
+    manager.buttons.forEach((btn) => {
+      expect(btn.interactive).toBe(true);
+    });
+  });
+
+  test("get button with value", () => {
+    resetManager(manager);
+    const buttonIndex = 0;
+    const btn = manager.getButton(values[buttonIndex]);
+    expect(btn).toBe(manager.buttons[buttonIndex]);
+  });
+
+  test("get button : undefined", () => {
+    resetManager(manager);
+    const btn = manager.getButton({ unexpect: true });
+    expect(btn).toBeNull();
+  });
 });
 
 function getRadioButton(value?: any): BasicRadioButton {
@@ -80,5 +109,6 @@ function getRadioButton(value?: any): BasicRadioButton {
 
 function resetManager(manager: BasicRadioButtonManager) {
   manager.enableAll();
+  manager.enableMouseAll();
   manager.deselectAllButtons();
 }
