@@ -7,7 +7,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/53987c65647c8bb04eba/maintainability)](https://codeclimate.com/github/MasatoMakino/pixijs-basic-button/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/53987c65647c8bb04eba/test_coverage)](https://codeclimate.com/github/MasatoMakino/pixijs-basic-button/test_coverage)
 
-[Github repository](https://github.com/MasatoMakino/pixijs-basic-button)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=MasatoMakino&repo=pixijs-basic-button&show_owner=true)](https://github.com/MasatoMakino/pixijs-basic-button)
 
 ## Demo
 
@@ -52,4 +52,4 @@ stage.addChild(button);
 
 ## License
 
-pixijs-basic-button is [MIT licensed](LICENSE).
+[MIT licensed](LICENSE).
