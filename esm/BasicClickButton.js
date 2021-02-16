@@ -1,8 +1,7 @@
-import {Container, Text} from "pixi.js";
-import {PixiJSCacheUtil} from "pixijs-cache-util";
-import {BasicButtonState} from "./BasicButtonState";
-import {ButtonLabelColorSet, ButtonMaterialSet} from "./ButtonMaterialSet";
-
+import { Container, Text } from "pixi.js";
+import { PixiJSCacheUtil } from "pixijs-cache-util";
+import { BasicButtonState } from "./BasicButtonState";
+import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
 /**
  * 基本ボタンクラス。
  * 選択状態を持たず、クリックした時点で結果が反映されるタイプのボタンです。
