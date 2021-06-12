@@ -1,3 +1,4 @@
+import * as PIXI from "pixi.js";
 import { Container, InteractionEvent, Text } from "pixi.js";
 import { BasicButtonState } from "./BasicButtonState";
 import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";

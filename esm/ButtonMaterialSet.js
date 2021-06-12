@@ -1,5 +1,4 @@
 import { BasicButtonState } from "./BasicButtonState";
-import { PixiJSCacheUtil } from "pixijs-cache-util";
 class ButtonOptionSet {
     /**
      * stateに対応するオプション値を取り出す
@@ -68,7 +67,7 @@ export class ButtonMaterialSet extends ButtonOptionSet {
             materials.selectNormal,
             materials.selectOver,
             materials.selectDown,
-            materials.selectMarker
+            materials.selectMarker,
         ];
     }
     /**
@@ -112,9 +111,6 @@ export class ButtonLabelColorSet extends ButtonOptionSet {
     static update(field, colors, state) {
         if (field == null)
             return;
-        PixiJSCacheUtil.updateText({
-            target: field,
-            style: { fill: this.getMaterial(colors, state) }
-        });
+        field.style.fill = this.getMaterial(colors, state);
     }
 }
