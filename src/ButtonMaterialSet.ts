@@ -1,7 +1,6 @@
 import { BasicButtonState } from "./BasicButtonState";
 import { BasicClickButton } from "./BasicClickButton";
 import { DisplayObject, Text } from "pixi.js";
-import { PixiJSCacheUtil } from "pixijs-cache-util";
 
 class ButtonOptionSet<T> {
   normal!: T;
@@ -89,7 +88,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
       materials.selectNormal,
       materials.selectOver,
       materials.selectDown,
-      materials.selectMarker
+      materials.selectMarker,
     ];
   }
 
@@ -143,10 +142,6 @@ export class ButtonLabelColorSet extends ButtonOptionSet<number> {
     state: BasicButtonState
   ): void {
     if (field == null) return;
-
-    PixiJSCacheUtil.updateText({
-      target: field,
-      style: { fill: this.getMaterial(colors, state) }
-    });
+    field.style.fill = this.getMaterial(colors, state);
   }
 }
