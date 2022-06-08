@@ -4,7 +4,7 @@ import {
   BasicCheckButton,
   BasicButtonEventType,
   BasicRadioButtonManager
-} from "../lib";
+} from "..";
 import { Application, Graphics } from "pixi.js";
 
 /**
