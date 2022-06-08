@@ -44,10 +44,5 @@
     "server": "npx @masatomakino/gulptask-dev-server -b ./docs/demo",
     "watch:demo": "npm run demo -- -W",
     "watch:tsc": "npx tsc -W --incremental --project tsconfig.cjs.json & npx tsc -W --incremental --project tsconfig.esm.json"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }
