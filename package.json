@@ -1,5 +1,5 @@
 {
-  "name": "pixijs-basic-button",
+  "name": "@masatomakino/pixijs-basic-button",
   "version": "0.2.0",
   "description": "Interactive button library for pixi.js",
   "main": "./lib/index.js",
@@ -9,7 +9,10 @@
     "lib",
     "esm"
   ],
-  "repository": "https://MasatoMakino@github.com/MasatoMakino/pixijs-basic-button.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://MasatoMakino@github.com/MasatoMakino/pixijs-basic-button.git"
+  },
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -44,5 +47,13 @@
     "server": "npx @masatomakino/gulptask-dev-server -b ./docs/demo",
     "watch:demo": "npm run demo -- -W",
     "watch:tsc": "npx tsc -W --incremental --project tsconfig.cjs.json & npx tsc -W --incremental --project tsconfig.esm.json"
+  },
+  "bugs": {
+    "url": "https://github.com/MasatoMakino/pixijs-basic-button/issues"
+  },
+  "homepage": "https://github.com/MasatoMakino/pixijs-basic-button#readme",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
   }
 }
