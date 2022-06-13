@@ -143,5 +143,9 @@ export class ButtonLabelColorSet extends ButtonOptionSet<number> {
   ): void {
     if (field == null) return;
     field.style.fill = this.getMaterial(colors, state);
+    if (field.cacheAsBitmap) {
+      field.cacheAsBitmap = false;
+      field.cacheAsBitmap = true;
+    }
   }
 }
