@@ -19,7 +19,6 @@
     "@types/jest": "^28.1.1",
     "@types/node": "^17.0.41",
     "canvas": "^2.9.1",
-    "dat.gui": "^0.7.9",
     "@masatomakino/gulptask-demo-page": "^0.4.4",
     "@masatomakino/gulptask-dev-server": "^0.4.1",
     "husky": "^8.0.1",
