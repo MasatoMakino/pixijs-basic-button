@@ -1,7 +1,6 @@
 import { BasicRadioButton } from "./BasicRadioButton";
 import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
-import * as PIXI from "pixi.js";
-
+import { EventEmitter } from "@pixi/utils";
 /**
  * 排他的に選択されるボタンを制御するクラスです。
  *
@@ -17,7 +16,7 @@ import * as PIXI from "pixi.js";
  * manager.selected = btn; //デフォルトで選択されているボタンを指定
  */
 
-export class BasicRadioButtonManager extends PIXI.utils.EventEmitter {
+export class BasicRadioButtonManager extends EventEmitter {
   protected _buttons: BasicRadioButton[] = [];
   protected _selected?: BasicRadioButton = null;
 

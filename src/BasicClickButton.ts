@@ -1,5 +1,4 @@
-import * as PIXI from "pixi.js";
-import { Container, InteractionEvent, Text } from "pixi.js";
+import { Container, InteractionEvent, Text, TextStyle } from "pixi.js";
 import { BasicButtonState } from "./BasicButtonState";
 import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
 
@@ -208,7 +207,7 @@ export class BasicClickButton extends Container {
     x: number,
     y: number,
     label: string,
-    style: PIXI.TextStyle,
+    style: TextStyle,
     color: ButtonLabelColorSet
   ): number {
     this.labelColors.push(color);
