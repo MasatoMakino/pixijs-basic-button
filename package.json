@@ -2,8 +2,8 @@
   "name": "@masatomakino/pixijs-basic-button",
   "version": "0.2.2",
   "description": "Interactive button library for pixi.js",
+  "main": "./esm/index.js",
   "types": "./esm/index.d.ts",
-  "module": "./esm/index.js",
   "files": [
     "esm"
   ],
@@ -38,7 +38,7 @@
     "prepare": "husky install",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run buildTS && npm run demo && npm run typedocs",
-    "demo": "npx @masatomakino/gulptask-demo-page",
+    "demo": "npx @masatomakino/gulptask-demo-page --compileTarget 'es6'",
     "buildTS": "npx tsc --project tsconfig.esm.json",
     "typedocs": "npx typedoc --out ./docs/api src/index.ts",
     "server": "npx @masatomakino/gulptask-dev-server -b ./docs/demo",

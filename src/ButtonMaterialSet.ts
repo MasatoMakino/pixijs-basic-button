@@ -1,5 +1,4 @@
-import { BasicButtonState } from "./BasicButtonState";
-import { BasicClickButton } from "./BasicClickButton";
+import { BasicClickButton, BasicButtonState } from "./index";
 import { DisplayObject, Text } from "pixi.js";
 
 class ButtonOptionSet<T> {
@@ -75,7 +74,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
   /**
    * 全ての表示パーツを配列として取得する。
    * @param {ButtonMaterialSet} materials
-   * @returns {createjs.DisplayObject[]}
+   * @returns {DisplayObject[]}
    */
   private static getMaterialArray(
     materials: ButtonMaterialSet
