@@ -13,6 +13,7 @@ describe("BasicRadioButton", () => {
   test("select", () => {
     resetButton(button);
 
+    // @ts-ignore
     button.emit("pointerover");
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
 
@@ -26,11 +27,13 @@ describe("BasicRadioButton", () => {
   test("select and over", () => {
     resetButton(button);
 
+    // @ts-ignore
     button.emit("pointerover");
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
 
     //セレクト中はdownできない
     button.selectButton();
+    // @ts-ignore
     button.emit("pointerdown");
     testMaterialVisible(mat, BasicButtonState.SELECT);
   });
@@ -47,5 +50,6 @@ describe("BasicRadioButton", () => {
 function resetButton(btn: BasicRadioButton): void {
   btn.deselectButton();
   btn.enableButton();
+  // @ts-ignore
   btn.emit("pointerout");
 }
