@@ -1,4 +1,4 @@
-import { InteractionEvent } from "pixi.js";
+import { FederatedPointerEvent } from "pixi.js";
 import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
 import { BasicButtonState } from "./BasicButtonState";
 import { BasicCheckButton } from "./BasicCheckButton";
@@ -11,7 +11,7 @@ export class BasicRadioButton extends BasicCheckButton {
    * ボタンを選択する。
    * @param evt
    */
-  public selectButton(evt?: InteractionEvent): void {
+  public selectButton(evt?: FederatedPointerEvent): void {
     if (this._isSelect) return;
 
     this._isSelect = true;
@@ -21,6 +21,7 @@ export class BasicRadioButton extends BasicCheckButton {
     }
 
     const buttonEvt = new BasicButtonContext(this, this.buttonValue);
+    // @ts-ignore
     this.emit(BasicButtonEventType.SELECTED, buttonEvt);
   }
 

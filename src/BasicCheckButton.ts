@@ -1,4 +1,4 @@
-import { InteractionEvent } from "pixi.js";
+import { FederatedPointerEvent } from "pixi.js";
 import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
 import { BasicButtonState } from "./BasicButtonState";
 import { BasicClickButton } from "./BasicClickButton";
@@ -9,7 +9,7 @@ import { BasicClickButton } from "./BasicClickButton";
 export class BasicCheckButton extends BasicClickButton {
   protected _isSelect: boolean = false;
 
-  public pressButton(evt?: InteractionEvent): void {
+  public pressButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
     this.isPressed = true;
 
@@ -19,7 +19,7 @@ export class BasicCheckButton extends BasicClickButton {
     this.updateMaterialVisible(state);
   }
 
-  public releaseButton(evt?: InteractionEvent): void {
+  public releaseButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
 
     if (!this.isPressed) return;
@@ -29,7 +29,7 @@ export class BasicCheckButton extends BasicClickButton {
     else this.selectButton(evt);
   }
 
-  public overButton(evt?: InteractionEvent): void {
+  public overButton(evt?: FederatedPointerEvent): void {
     super.overButton(evt);
 
     if (!this.checkActivity()) return;
@@ -39,7 +39,7 @@ export class BasicCheckButton extends BasicClickButton {
     this.updateMaterialVisible(state);
   }
 
-  public outButton(evt?: InteractionEvent): void {
+  public outButton(evt?: FederatedPointerEvent): void {
     super.outButton(evt);
 
     if (!this.isDisable) {
@@ -55,7 +55,7 @@ export class BasicCheckButton extends BasicClickButton {
    * ボタンを選択する。
    * @param evt
    */
-  public selectButton(evt?: InteractionEvent): void {
+  public selectButton(evt?: FederatedPointerEvent): void {
     if (this._isSelect) return;
 
     this._isSelect = true;
@@ -67,14 +67,15 @@ export class BasicCheckButton extends BasicClickButton {
     }
 
     const buttonEvt = new BasicButtonContext(this, this.buttonValue);
+    // @ts-ignore
     this.emit(BasicButtonEventType.SELECTED, buttonEvt);
   }
 
   /**
    * ボタンの選択を解除する。
-   * @param { InteractionEvent} evt
+   * @param evt
    */
-  public deselectButton(evt?: InteractionEvent): void {
+  public deselectButton(evt?: FederatedPointerEvent): void {
     if (!this._isSelect) return;
 
     if (!this.isDisable) {
@@ -86,6 +87,7 @@ export class BasicCheckButton extends BasicClickButton {
     this._isSelect = false;
 
     const buttonEvt = new BasicButtonContext(this, this.buttonValue);
+    // @ts-ignore
     this.emit(BasicButtonEventType.UNSELECTED, buttonEvt);
   }
 

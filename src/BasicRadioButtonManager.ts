@@ -26,6 +26,7 @@ export class BasicRadioButtonManager extends EventEmitter {
    */
   public add(button: BasicRadioButton): void {
     this._buttons.push(button);
+    // @ts-ignore
     button.on(BasicButtonEventType.SELECTED, (e: any) => {
       const ctx = e as BasicButtonContext;
       this.deselectOthers(ctx.target as BasicRadioButton);
@@ -105,6 +106,7 @@ export class BasicRadioButtonManager extends EventEmitter {
     }
 
     const evt: BasicButtonContext = new BasicButtonContext(null, null);
+    // @ts-ignore
     this.emit(BasicButtonEventType.UNSELECTED, evt);
   }
 
