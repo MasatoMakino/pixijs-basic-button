@@ -1,3 +1,4 @@
+import { DummyPointerEvent } from "./DummyPointerEvent";
 import { BasicButtonState, BasicCheckButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
@@ -15,25 +16,20 @@ describe("BasicCheckButton", () => {
     button.deselectButton();
     expect(button.getButtonState()).toBe(BasicButtonState.NORMAL);
 
-    // @ts-ignore
-    button.emit("pointerover");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
-    // @ts-ignore
-    button.emit("pointerout");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
     testMaterialVisible(mat, BasicButtonState.NORMAL);
 
-    // @ts-ignore
-    button.emit("pointerdown");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
     testMaterialVisible(mat, BasicButtonState.NORMAL_DOWN);
 
     //pointerOut後にupした場合はBasicButtonState.SELECT
-    // @ts-ignore
-    button.emit("pointerup");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
     testMaterialVisible(mat, BasicButtonState.SELECT);
 
     //pointerUpが多重しても状態は変わらない
-    // @ts-ignore
-    button.emit("pointerup");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
     testMaterialVisible(mat, BasicButtonState.SELECT);
   });
 
@@ -41,20 +37,16 @@ describe("BasicCheckButton", () => {
     button.selectButton();
     expect(button.getButtonState()).toBe(BasicButtonState.SELECT);
 
-    // @ts-ignore
-    button.emit("pointerover");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     testMaterialVisible(mat, BasicButtonState.SELECT_OVER);
-    // @ts-ignore
-    button.emit("pointerout");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
     testMaterialVisible(mat, BasicButtonState.SELECT);
 
-    // @ts-ignore
-    button.emit("pointerdown");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
     testMaterialVisible(mat, BasicButtonState.SELECT_DOWN);
 
     //pointerOut後にupした場合はBasicButtonState.SELECT
-    // @ts-ignore
-    button.emit("pointerup");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
     testMaterialVisible(mat, BasicButtonState.NORMAL);
   });
 
@@ -63,20 +55,16 @@ describe("BasicCheckButton", () => {
     button.disableButton();
     expect(button.getButtonState()).toBe(BasicButtonState.DISABLE);
 
-    // @ts-ignore
-    button.emit("pointerover");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     testMaterialVisible(mat, BasicButtonState.DISABLE);
-    // @ts-ignore
-    button.emit("pointerout");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
     testMaterialVisible(mat, BasicButtonState.DISABLE);
 
-    // @ts-ignore
-    button.emit("pointerdown");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
     testMaterialVisible(mat, BasicButtonState.DISABLE);
 
     //pointerOut後にupした場合はBasicButtonState.SELECT
-    // @ts-ignore
-    button.emit("pointerup");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
     testMaterialVisible(mat, BasicButtonState.DISABLE);
   });
 
@@ -95,16 +83,14 @@ describe("BasicCheckButton", () => {
     button.deselectButton();
     expect(button.getButtonState()).toBe(BasicButtonState.NORMAL);
 
-    // @ts-ignore
-    button.emit("pointerover");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     button.deselectButton();
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
 
     button.selectButton();
     testMaterialVisible(mat, BasicButtonState.SELECT_OVER);
 
-    // @ts-ignore
-    button.emit("pointerout");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
     button.deselectButton();
     testMaterialVisible(mat, BasicButtonState.NORMAL);
   });

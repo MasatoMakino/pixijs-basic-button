@@ -1,5 +1,6 @@
 import { BasicButtonState, BasicRadioButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
+import { DummyPointerEvent } from "./DummyPointerEvent";
 
 describe("BasicRadioButton", () => {
   const mat = getTestMaterialSet();
@@ -13,8 +14,7 @@ describe("BasicRadioButton", () => {
   test("select", () => {
     resetButton(button);
 
-    // @ts-ignore
-    button.emit("pointerover");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
 
     button.selectButton();
@@ -27,14 +27,13 @@ describe("BasicRadioButton", () => {
   test("select and over", () => {
     resetButton(button);
 
-    // @ts-ignore
-    button.emit("pointerover");
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
 
     //セレクト中はdownできない
     button.selectButton();
-    // @ts-ignore
-    button.emit("pointerdown");
+
+    DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
     testMaterialVisible(mat, BasicButtonState.SELECT);
   });
 
@@ -47,9 +46,9 @@ describe("BasicRadioButton", () => {
   });
 });
 
-function resetButton(btn: BasicRadioButton): void {
-  btn.deselectButton();
-  btn.enableButton();
-  // @ts-ignore
-  btn.emit("pointerout");
+function resetButton(button: BasicRadioButton): void {
+  button.deselectButton();
+  button.enableButton();
+
+  DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
 }

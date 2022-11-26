@@ -1,3 +1,5 @@
+import { DisplayObject, DisplayObjectEvents } from "pixi.js";
+
 export class DummyPointerEvent {
   static generate() {
     return {
@@ -13,5 +15,12 @@ export class DummyPointerEvent {
       twist: 0,
       detail: 0,
     };
+  }
+
+  static emitDummyPointerEvent(
+    button: DisplayObject,
+    type: keyof DisplayObjectEvents
+  ): void {
+    button.emit(type, { type } as any);
   }
 }
