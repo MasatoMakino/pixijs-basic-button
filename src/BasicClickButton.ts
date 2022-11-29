@@ -36,7 +36,7 @@ export class BasicClickButton extends Container {
     super();
 
     this.interactive = true;
-    // this.buttonMode = true;
+    this.cursor = "pointer";
     this.setMouseEvents();
 
     if (materials) this.initMaterial(materials);
@@ -173,7 +173,7 @@ export class BasicClickButton extends Container {
     this.updateMouseEnabled();
   }
 
-  private updateMouseEnabled() {
+  protected updateMouseEnabled() {
     this.interactive = !this.isDisable && !this._frozen;
   }
 
