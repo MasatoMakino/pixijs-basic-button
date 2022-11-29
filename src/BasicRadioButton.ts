@@ -1,4 +1,5 @@
 import { FederatedPointerEvent } from "pixi.js";
+import { ButtonMaterialSet } from "./ButtonMaterialSet";
 import { BasicButtonContext } from "./BasicButtonContext";
 import { BasicButtonState } from "./BasicButtonState";
 import { BasicCheckButton } from "./BasicCheckButton";
@@ -7,6 +8,17 @@ import { BasicCheckButton } from "./BasicCheckButton";
  * 排他的に選択可能なボタン。ラジオボタンのセットはBasicRadioButtonManagerで設定する。
  */
 export class BasicRadioButton extends BasicCheckButton {
+  constructor(materials?: ButtonMaterialSet) {
+    super(materials);
+
+    this._selectionState.on("selected", () => {
+      this.cursor = "auto";
+    });
+    this._selectionState.on("unselected", () => {
+      this.cursor = "pointer";
+    });
+  }
+
   /**
    * ボタンを選択する。
    * @param evt

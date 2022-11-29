@@ -173,7 +173,7 @@ export class BasicClickButton extends Container {
     this.updateMouseEnabled();
   }
 
-  protected updateMouseEnabled() {
+  private updateMouseEnabled() {
     this.interactive = !this.isDisable && !this._frozen;
   }
 
