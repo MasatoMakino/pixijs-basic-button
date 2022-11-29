@@ -1,5 +1,5 @@
 import { FederatedPointerEvent } from "pixi.js";
-import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
+import { BasicButtonContext } from "./BasicButtonContext";
 import { BasicButtonState } from "./BasicButtonState";
 import { BasicCheckButton } from "./BasicCheckButton";
 
@@ -12,17 +12,16 @@ export class BasicRadioButton extends BasicCheckButton {
    * @param evt
    */
   public selectButton(evt?: FederatedPointerEvent): void {
-    if (this._isSelect) return;
+    if (this._selectionState.isSelected) return;
 
-    this._isSelect = true;
+    this._selectionState.isSelected = true;
     if (!this.isDisable) {
       //ラジオボタンは選択した時点で操作不可となる。そのためSELECT_OVERには遷移しない。
       this.updateMaterialVisible(BasicButtonState.SELECT);
     }
 
     const buttonEvt = new BasicButtonContext(this, this.buttonValue);
-    // @ts-ignore
-    this.emit(BasicButtonEventType.SELECTED, buttonEvt);
+    this._selectionState.emit("selected", buttonEvt);
   }
 
   /**
@@ -31,7 +30,7 @@ export class BasicRadioButton extends BasicCheckButton {
    * @return    ボタンが有効か否か
    */
   protected checkActivity(): boolean {
-    if (this._isSelect) return false;
+    if (this._selectionState.isSelected) return false;
     return super.checkActivity();
   }
 }
