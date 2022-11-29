@@ -2,8 +2,7 @@ import {
   BasicRadioButton,
   BasicClickButton,
   BasicCheckButton,
-  BasicButtonEventType,
-  BasicRadioButtonManager
+  BasicRadioButtonManager,
 } from "..";
 import { Application, Graphics } from "pixi.js";
 
@@ -21,7 +20,7 @@ const onDomContentsLoaded = () => {
   initRadioMarkerButton(app.stage);
 };
 
-const initButton = stage => {
+const initButton = (stage) => {
   const button = new BasicClickButton(getMaterialSet());
   button.x = button.y = 36;
   const index = addLabel(button);
@@ -29,7 +28,7 @@ const initButton = stage => {
   stage.addChild(button);
 };
 
-const initCheckButton = stage => {
+const initCheckButton = (stage) => {
   const buttonSelect = new BasicCheckButton(getMaterialSet());
   buttonSelect.y = 36;
   buttonSelect.x = 36 + 128 + 36;
@@ -38,12 +37,12 @@ const initCheckButton = stage => {
 
   stage.addChild(buttonSelect);
 
-  buttonSelect.on(BasicButtonEventType.SELECTED, e => {
+  buttonSelect.on("selected", (e) => {
     console.log(e);
   });
 };
 
-const initRadioButton = stage => {
+const initRadioButton = (stage) => {
   const manager = new BasicRadioButtonManager();
 
   const n = 4;
@@ -58,12 +57,12 @@ const initRadioButton = stage => {
   }
 
   manager.selected = manager.buttons[0];
-  manager.on(BasicButtonEventType.SELECTED, e => {
+  manager.on("selected", (e) => {
     console.log(e);
   });
 };
 
-const initRadioMarkerButton = stage => {
+const initRadioMarkerButton = (stage) => {
   const manager = new BasicRadioButtonManager();
 
   const n = 4;
@@ -78,7 +77,7 @@ const initRadioMarkerButton = stage => {
   }
 
   manager.selected = manager.buttons[0];
-  manager.on(BasicButtonEventType.SELECTED, e => {
+  manager.on("selected", (e) => {
     console.log(e);
   });
 };
@@ -90,7 +89,7 @@ const getMaterialSet = (hasMarker = false) => {
     down: getRect(0xffffff),
     selectNormal: getRect(0x330033),
     selectOver: getRect(0x442244),
-    selectDown: getRect(0x333333)
+    selectDown: getRect(0x333333),
   };
   if (hasMarker) {
     console.log(hasMarker);
@@ -99,16 +98,13 @@ const getMaterialSet = (hasMarker = false) => {
   return mat;
 };
 
-const getRect = color => {
+const getRect = (color) => {
   const gra = new Graphics();
-  gra
-    .beginFill(color)
-    .drawRect(0, 0, 128, 32)
-    .endFill();
+  gra.beginFill(color).drawRect(0, 0, 128, 32).endFill();
   return gra;
 };
 
-const addLabel = btn => {
+const addLabel = (btn) => {
   return btn.addLabel(
     0,
     0,
@@ -120,16 +116,14 @@ const addLabel = btn => {
       down: 0x000000,
       selectNormal: 0xffff33,
       selectOver: 0x00ff00,
-      selectDown: 0x999999
+      selectDown: 0x999999,
     }
   );
 };
 
 const getMarker = () => {
   const g = new Graphics();
-  g.beginFill(0xff0000)
-    .drawCircle(0, 0, 8)
-    .endFill();
+  g.beginFill(0xff0000).drawCircle(0, 0, 8).endFill();
   return g;
 };
 

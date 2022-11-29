@@ -10,8 +10,3 @@ export class BasicButtonContext {
     this.buttonValue = value;
   }
 }
-
-export enum BasicButtonEventType {
-  SELECTED = "button_event_select",
-  UNSELECTED = "button_event_unselected"
-}

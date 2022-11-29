@@ -1,6 +1,8 @@
+import { BasicButtonSelectionEventType } from "./SelectionState";
 import { BasicRadioButton } from "./BasicRadioButton";
-import { BasicButtonContext, BasicButtonEventType } from "./BasicButtonContext";
-import { EventEmitter } from "@pixi/utils";
+import { BasicButtonContext } from "./BasicButtonContext";
+import { utils } from "@pixi/core";
+
 /**
  * 排他的に選択されるボタンを制御するクラスです。
  *
@@ -16,7 +18,7 @@ import { EventEmitter } from "@pixi/utils";
  * manager.selected = btn; //デフォルトで選択されているボタンを指定
  */
 
-export class BasicRadioButtonManager extends EventEmitter {
+export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelectionEventType> {
   protected _buttons: BasicRadioButton[] = [];
   protected _selected?: BasicRadioButton = null;
 
@@ -26,7 +28,7 @@ export class BasicRadioButtonManager extends EventEmitter {
    */
   public add(button: BasicRadioButton): void {
     this._buttons.push(button);
-    button.on(BasicButtonEventType.SELECTED, (e: any) => {
+    button.selectionState.on("selected", (e) => {
       const ctx = e as BasicButtonContext;
       this.deselectOthers(ctx.target as BasicRadioButton);
     });
@@ -91,7 +93,7 @@ export class BasicRadioButtonManager extends EventEmitter {
         this._selected.buttonValue
       );
       evt.index = this._buttons.indexOf(this._selected);
-      this.emit(BasicButtonEventType.SELECTED, evt);
+      this.emit("selected", evt);
     }
   }
 
@@ -105,7 +107,7 @@ export class BasicRadioButtonManager extends EventEmitter {
     }
 
     const evt: BasicButtonContext = new BasicButtonContext(null, null);
-    this.emit(BasicButtonEventType.UNSELECTED, evt);
+    this.emit("unselected", evt);
   }
 
   public disableAll(): void {

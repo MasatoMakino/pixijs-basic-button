@@ -1,4 +1,4 @@
-import { Container, InteractionEvent, Text, TextStyle } from "pixi.js";
+import { Container, FederatedPointerEvent, Text, TextStyle } from "pixi.js";
 import { BasicButtonState } from "./BasicButtonState";
 import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
 
@@ -36,7 +36,7 @@ export class BasicClickButton extends Container {
     super();
 
     this.interactive = true;
-    this.buttonMode = true;
+    this.cursor = "pointer";
     this.setMouseEvents();
 
     if (materials) this.initMaterial(materials);
@@ -47,16 +47,16 @@ export class BasicClickButton extends Container {
    */
   private setMouseEvents(): void {
     this.on("pointerdown", (e: any) => {
-      this.pressButton(e as InteractionEvent);
+      this.pressButton(e as FederatedPointerEvent);
     });
     this.on("pointerup", (e: any) => {
-      this.releaseButton(e as InteractionEvent);
+      this.releaseButton(e as FederatedPointerEvent);
     });
     this.on("pointerover", (e: any) => {
-      this.overButton(e as InteractionEvent);
+      this.overButton(e as FederatedPointerEvent);
     });
     this.on("pointerout", (e: any) => {
-      this.outButton(e as InteractionEvent);
+      this.outButton(e as FederatedPointerEvent);
     });
   }
 
@@ -98,7 +98,7 @@ export class BasicClickButton extends Container {
    * 状態と表示を更新する。
    * @param evt
    */
-  public pressButton(evt?: InteractionEvent): void {
+  public pressButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
     this.isPressed = true;
     this.updateMaterialVisible(BasicButtonState.NORMAL_DOWN);
@@ -107,9 +107,9 @@ export class BasicClickButton extends Container {
   /**
    * ボタン上でマウスアップした際の処理。
    * 状態と表示を更新する。
-   * @param {createjs.InteractionEvent} evt
+   * @param evt
    */
-  public releaseButton(evt?: InteractionEvent): void {
+  public releaseButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
     if (!this.isPressed) return;
 
@@ -124,9 +124,9 @@ export class BasicClickButton extends Container {
   /**
    * ボタンにマウスオーバーした際の処理。
    * 状態と表示を更新する。
-   * @param {createjs.InteractionEvent} evt
+   * @param evt
    */
-  public overButton(evt?: InteractionEvent): void {
+  public overButton(evt?: FederatedPointerEvent): void {
     this.isOver = true;
 
     if (!this.checkActivity()) return;
@@ -138,7 +138,7 @@ export class BasicClickButton extends Container {
    * 状態と表示を更新する。
    * @param evt
    */
-  public outButton(evt?: InteractionEvent): void {
+  public outButton(evt?: FederatedPointerEvent): void {
     this.isOver = false;
     this.isPressed = false;
 

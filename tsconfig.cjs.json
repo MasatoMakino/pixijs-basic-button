@@ -1,7 +1,6 @@
 {
-  "extends": "./tsconfig.bin.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
     "declaration": true,
     "declarationMap": true,

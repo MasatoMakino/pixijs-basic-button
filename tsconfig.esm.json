@@ -1,10 +1,10 @@
 {
-  "extends": "./tsconfig.bin.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "es2015",
     "declaration": false,
     "declarationMap": false,
-    "outDir": "./esm"
-  }
+    "outDir": "./esm",
+    "rootDir": "./src"
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
