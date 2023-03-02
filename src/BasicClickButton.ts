@@ -46,17 +46,17 @@ export class BasicClickButton extends Container {
    * ボタンに対するマウスハンドリングを開始する。
    */
   private setMouseEvents(): void {
-    this.on("pointerdown", (e: any) => {
-      this.pressButton(e as FederatedPointerEvent);
+    this.on("pointerdown", (e) => {
+      this.pressButton(e);
     });
-    this.on("pointerup", (e: any) => {
-      this.releaseButton(e as FederatedPointerEvent);
+    this.on("pointerup", (e) => {
+      this.releaseButton(e);
     });
-    this.on("pointerover", (e: any) => {
-      this.overButton(e as FederatedPointerEvent);
+    this.on("pointerover", (e) => {
+      this.overButton(e);
     });
-    this.on("pointerout", (e: any) => {
-      this.outButton(e as FederatedPointerEvent);
+    this.on("pointerout", (e) => {
+      this.outButton(e);
     });
   }
 
