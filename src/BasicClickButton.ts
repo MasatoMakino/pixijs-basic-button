@@ -263,10 +263,10 @@ export class BasicClickButton<T = any> extends Container {
     return this._labelField[index];
   }
 
-  get buttonValue(): any {
+  get buttonValue(): T {
     return this._buttonValue;
   }
-  set buttonValue(value: any) {
+  set buttonValue(value: T) {
     if (this._buttonValue != value) {
       this._buttonValue = value;
     }
