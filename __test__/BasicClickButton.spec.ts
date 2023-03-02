@@ -5,8 +5,9 @@ import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 describe("BasicClickButton", () => {
   const mat = getTestMaterialSet();
   const dummyMat = getTestMaterialSet();
-  const button = new BasicClickButton(dummyMat);
+  const button = new BasicClickButton<string>(dummyMat);
   button.initMaterial(mat);
+  button.buttonValue = "test button value";
 
   test("constructor", () => {
     expect(button).toBeTruthy();

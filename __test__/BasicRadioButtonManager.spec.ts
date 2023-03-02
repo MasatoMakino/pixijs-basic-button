@@ -1,8 +1,4 @@
-import {
-  BasicButtonState,
-  BasicRadioButton,
-  BasicRadioButtonManager,
-} from "../src";
+import { BasicRadioButton, BasicRadioButtonManager } from "../src";
 import { getTestMaterialSet } from "./TestMaterial";
 
 describe("BasicRadioButtonManager", () => {
@@ -10,9 +6,9 @@ describe("BasicRadioButtonManager", () => {
   spyWarn.mockImplementation((x) => x);
 
   const values = [0, "", null, { x: 0 }, undefined];
-  const manager = new BasicRadioButtonManager();
+  const manager = new BasicRadioButtonManager<any>();
   values.forEach((val) => {
-    manager.add(getRadioButton(val));
+    manager.add(generateRadioButton(val));
   });
 
   test("constructor", () => {
@@ -46,7 +42,7 @@ describe("BasicRadioButtonManager", () => {
 
   test("select button : unmanaged button", () => {
     resetManager(manager);
-    const btn = getRadioButton(null);
+    const btn = generateRadioButton(null);
     manager.selected = btn;
     expect(spyWarn).toBeCalled();
     spyWarn.mockClear();
@@ -98,7 +94,7 @@ describe("BasicRadioButtonManager", () => {
   });
 });
 
-function getRadioButton(value?: any): BasicRadioButton {
+function generateRadioButton(value?: any): BasicRadioButton {
   const mat = getTestMaterialSet();
   const btn = new BasicRadioButton(mat);
   if (value !== undefined) {

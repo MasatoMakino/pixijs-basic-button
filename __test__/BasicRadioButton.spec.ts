@@ -1,10 +1,11 @@
-import { BasicButtonState, BasicRadioButton } from "../src";
+import { BasicRadioButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 import { DummyPointerEvent } from "./DummyPointerEvent";
 
 describe("BasicRadioButton", () => {
   const mat = getTestMaterialSet();
-  const button = new BasicRadioButton(mat);
+  const button = new BasicRadioButton<string>(mat);
+  button.buttonValue = "test radio button value";
 
   test("constructor", () => {
     expect(button).toBeTruthy();

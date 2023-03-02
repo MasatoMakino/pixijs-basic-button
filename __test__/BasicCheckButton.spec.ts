@@ -1,10 +1,11 @@
 import { DummyPointerEvent } from "./DummyPointerEvent";
-import { BasicButtonState, BasicCheckButton } from "../src";
+import { BasicCheckButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicCheckButton", () => {
   const mat = getTestMaterialSet();
-  const button = new BasicCheckButton(mat);
+  const button = new BasicCheckButton<string>(mat);
+  button.buttonValue = "test check button value";
 
   test("constructor", () => {
     expect(button).toBeTruthy();
