@@ -29,7 +29,7 @@ export class BasicRadioButton extends BasicCheckButton {
     this._selectionState.isSelected = true;
     if (!this.isDisable) {
       //ラジオボタンは選択した時点で操作不可となる。そのためSELECT_OVERには遷移しない。
-      this.updateMaterialVisible(BasicButtonState.SELECT);
+      this.updateMaterialVisible("select");
     }
 
     const buttonEvt = new BasicButtonContext(this, this.buttonValue);

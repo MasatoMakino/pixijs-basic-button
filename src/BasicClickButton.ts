@@ -101,7 +101,7 @@ export class BasicClickButton extends Container {
   public pressButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
     this.isPressed = true;
-    this.updateMaterialVisible(BasicButtonState.NORMAL_DOWN);
+    this.updateMaterialVisible("normal_down");
   }
 
   /**
@@ -115,10 +115,7 @@ export class BasicClickButton extends Container {
 
     this.isPressed = false;
 
-    const state = this.isOver
-      ? BasicButtonState.NORMAL_OVER
-      : BasicButtonState.NORMAL;
-    this.updateMaterialVisible(state);
+    this.updateMaterialVisible(this.isOver ? "normal_over" : "normal");
   }
 
   /**
@@ -130,7 +127,7 @@ export class BasicClickButton extends Container {
     this.isOver = true;
 
     if (!this.checkActivity()) return;
-    this.updateMaterialVisible(BasicButtonState.NORMAL_OVER);
+    this.updateMaterialVisible("normal_over");
   }
 
   /**
@@ -143,7 +140,7 @@ export class BasicClickButton extends Container {
     this.isPressed = false;
 
     if (!this.checkActivity()) return;
-    this.updateMaterialVisible(BasicButtonState.NORMAL);
+    this.updateMaterialVisible("normal");
   }
 
   /**
@@ -152,7 +149,7 @@ export class BasicClickButton extends Container {
   public disableButton(): void {
     this.isDisable = true;
     this.updateMouseEnabled();
-    this.updateMaterialVisible(BasicButtonState.DISABLE);
+    this.updateMaterialVisible("disable");
   }
 
   /**
@@ -161,7 +158,7 @@ export class BasicClickButton extends Container {
   public enableButton(): void {
     this.isDisable = false;
     this.updateMouseEnabled();
-    this.updateMaterialVisible(BasicButtonState.NORMAL);
+    this.updateMaterialVisible("normal");
   }
 
   get frozen(): boolean {
@@ -190,8 +187,8 @@ export class BasicClickButton extends Container {
    * @returns {BasicButtonState}
    */
   public getButtonState(): BasicButtonState {
-    if (this.isDisable) return BasicButtonState.DISABLE;
-    else return BasicButtonState.NORMAL;
+    if (this.isDisable) return "disable";
+    else return "normal";
   }
 
   /**
