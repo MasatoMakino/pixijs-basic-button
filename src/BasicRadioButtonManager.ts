@@ -1,7 +1,7 @@
 import { BasicButtonSelectionEventType } from "./SelectionState";
 import { BasicRadioButton } from "./BasicRadioButton";
 import { BasicButtonContext } from "./BasicButtonContext";
-import { utils } from "@pixi/core";
+import { EventEmitter } from "@pixi/utils";
 
 /**
  * 排他的に選択されるボタンを制御するクラスです。
@@ -18,19 +18,21 @@ import { utils } from "@pixi/core";
  * manager.selected = btn; //デフォルトで選択されているボタンを指定
  */
 
-export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelectionEventType> {
-  protected _buttons: BasicRadioButton[] = [];
-  protected _selected?: BasicRadioButton = null;
+export class BasicRadioButtonManager<
+  T = any
+> extends EventEmitter<BasicButtonSelectionEventType> {
+  protected _buttons: BasicRadioButton<T>[] = [];
+  protected _selected?: BasicRadioButton<T> = null;
 
   /**
    * ラジオボタンのグループにボタンを追加する。
    * @param {BasicRadioButton} button
    */
-  public add(button: BasicRadioButton): void {
+  public add(button: BasicRadioButton<T>): void {
     this._buttons.push(button);
     button.selectionState.on("selected", (e) => {
-      const ctx = e as BasicButtonContext;
-      this.deselectOthers(ctx.target as BasicRadioButton);
+      const ctx = e as BasicButtonContext<T>;
+      this.deselectOthers(ctx.target as BasicRadioButton<T>);
     });
   }
 
@@ -39,7 +41,7 @@ export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelec
    * nullを引数に取ると全ての選択を解除する。
    * @param {BasicRadioButton} selectedButton
    */
-  set selected(selectedButton: BasicRadioButton) {
+  set selected(selectedButton: BasicRadioButton<T>) {
     this._selected = selectedButton;
 
     if (selectedButton == null) {
@@ -66,7 +68,7 @@ export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelec
    * 選択されていない場合はnullを返す。
    * @returns {BasicRadioButton | null}
    */
-  get selected(): BasicRadioButton | null {
+  get selected(): BasicRadioButton<T> | null {
     return this._selected;
   }
 
@@ -76,7 +78,7 @@ export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelec
    * @param {boolean} isDispatchSelectEvent
    */
   protected deselectOthers(
-    selectedButton: BasicRadioButton,
+    selectedButton: BasicRadioButton<T>,
     isDispatchSelectEvent: boolean = true
   ): void {
     this._selected = selectedButton;
@@ -88,7 +90,7 @@ export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelec
     }
 
     if (isDispatchSelectEvent) {
-      const evt: BasicButtonContext = new BasicButtonContext(
+      const evt: BasicButtonContext<T> = new BasicButtonContext(
         this._selected,
         this._selected.buttonValue
       );
@@ -151,7 +153,7 @@ export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelec
    * このインスタンスで管理をしているラジオボタンの配列を取得する。
    * @returns {BasicRadioButton[]}
    */
-  get buttons(): BasicRadioButton[] {
+  get buttons(): BasicRadioButton<T>[] {
     return this._buttons;
   }
 
@@ -162,7 +164,7 @@ export class BasicRadioButtonManager extends utils.EventEmitter<BasicButtonSelec
    * @param value
    * @returns {BasicRadioButton | null}
    */
-  public getButton(value: any): BasicRadioButton | null {
+  public getButton(value: any): BasicRadioButton<T> | null {
     for (let btn of this._buttons) {
       if (btn.buttonValue === value && btn.buttonValue != null) {
         return btn;

@@ -11,7 +11,7 @@ import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
  *  stage.enableMouseOver();
  */
 
-export class BasicClickButton extends Container {
+export class BasicClickButton<T = any> extends Container {
   protected isDisable: boolean = false; //ボタンが使用不可状態か否か
   protected isPressed: boolean = false; //ボタンが押されているか否か
   protected isOver: boolean = false; //マウスオーバーしているか否か
@@ -21,7 +21,7 @@ export class BasicClickButton extends Container {
    */
   private _frozen: boolean = false;
 
-  protected _buttonValue: any = null; //このボタンに割り当てられた値
+  protected _buttonValue: T = null; //このボタンに割り当てられた値
   protected material!: ButtonMaterialSet; //状態マテリアル 状態によって表示が切り替わるもの。
 
   /*ボタンラベル*/

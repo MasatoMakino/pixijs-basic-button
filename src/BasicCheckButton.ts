@@ -8,7 +8,7 @@ import { BasicClickButton } from "./BasicClickButton";
 /**
  * 選択状態を持つボタンクラス。
  */
-export class BasicCheckButton extends BasicClickButton {
+export class BasicCheckButton<T = any> extends BasicClickButton<T> {
   get selectionState(): SelectionState {
     return this._selectionState;
   }
