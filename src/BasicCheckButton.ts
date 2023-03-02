@@ -9,14 +9,14 @@ import { BasicClickButton } from "./BasicClickButton";
  * 選択状態を持つボタンクラス。
  */
 export class BasicCheckButton<T = any> extends BasicClickButton<T> {
-  get selectionState(): SelectionState {
+  get selectionState(): SelectionState<T> {
     return this._selectionState;
   }
-  protected _selectionState: SelectionState;
+  protected _selectionState: SelectionState<T>;
 
   constructor(materials?: ButtonMaterialSet) {
     super(materials);
-    this._selectionState = new SelectionState();
+    this._selectionState = new SelectionState<T>();
   }
 
   public pressButton(evt?: FederatedPointerEvent): void {

@@ -1,12 +1,14 @@
 import { EventEmitter } from "@pixi/utils";
 import { BasicButtonContext } from "./BasicButtonContext";
 
-export interface BasicButtonSelectionEventType {
-  selected: (e: BasicButtonContext) => void;
-  unselected: (e: BasicButtonContext) => void;
+export interface BasicButtonSelectionEventType<T = any> {
+  selected: (e: BasicButtonContext<T>) => void;
+  unselected: (e: BasicButtonContext<T>) => void;
 }
 
-export class SelectionState extends EventEmitter<BasicButtonSelectionEventType> {
+export class SelectionState<T = any> extends EventEmitter<
+  BasicButtonSelectionEventType<T>
+> {
   public isSelected: boolean = false;
   constructor(isSelected: boolean = false) {
     super();
