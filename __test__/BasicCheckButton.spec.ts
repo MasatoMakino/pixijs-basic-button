@@ -1,10 +1,11 @@
 import { DummyPointerEvent } from "./DummyPointerEvent";
-import { BasicButtonState, BasicCheckButton } from "../src";
+import { BasicCheckButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicCheckButton", () => {
   const mat = getTestMaterialSet();
-  const button = new BasicCheckButton(mat);
+  const button = new BasicCheckButton<string>(mat);
+  button.buttonValue = "test check button value";
 
   test("constructor", () => {
     expect(button).toBeTruthy();
@@ -14,84 +15,82 @@ describe("BasicCheckButton", () => {
 
   test("change state : enable + deselect", () => {
     button.deselectButton();
-    expect(button.getButtonState()).toBe(BasicButtonState.NORMAL);
+    expect(button.getButtonState()).toBe("normal");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_DOWN);
+    testMaterialVisible(mat, "normal_down");
 
     //pointerOut後にupした場合はBasicButtonState.SELECT
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
 
     //pointerUpが多重しても状態は変わらない
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
   });
 
   test("change state : enable + select", () => {
     button.selectButton();
-    expect(button.getButtonState()).toBe(BasicButtonState.SELECT);
+    expect(button.getButtonState()).toBe("select");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.SELECT_OVER);
+    testMaterialVisible(mat, "select_over");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.SELECT_DOWN);
-
-    //pointerOut後にupした場合はBasicButtonState.SELECT
+    testMaterialVisible(mat, "select_down");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
   });
 
   test("change state : disable", () => {
     button.deselectButton();
     button.disableButton();
-    expect(button.getButtonState()).toBe(BasicButtonState.DISABLE);
+    expect(button.getButtonState()).toBe("disable");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
 
     //pointerOut後にupした場合はBasicButtonState.SELECT
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
   });
 
   test("change state : disable to enable", () => {
     button.enableButton();
-    expect(button.getButtonState()).toBe(BasicButtonState.NORMAL);
+    expect(button.getButtonState()).toBe("normal");
 
     button.selectButton();
     button.enableButton();
-    expect(button.getButtonState()).toBe(BasicButtonState.SELECT);
+    expect(button.getButtonState()).toBe("select");
 
     button.deselectButton();
   });
 
   test("change state : deselect to select to deselect", () => {
     button.deselectButton();
-    expect(button.getButtonState()).toBe(BasicButtonState.NORMAL);
+    expect(button.getButtonState()).toBe("normal");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
     button.deselectButton();
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
 
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.SELECT_OVER);
+    testMaterialVisible(mat, "select_over");
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
     button.deselectButton();
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
   });
 });

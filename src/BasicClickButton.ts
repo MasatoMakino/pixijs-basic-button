@@ -11,7 +11,7 @@ import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
  *  stage.enableMouseOver();
  */
 
-export class BasicClickButton extends Container {
+export class BasicClickButton<T = any> extends Container {
   protected isDisable: boolean = false; //ボタンが使用不可状態か否か
   protected isPressed: boolean = false; //ボタンが押されているか否か
   protected isOver: boolean = false; //マウスオーバーしているか否か
@@ -21,7 +21,7 @@ export class BasicClickButton extends Container {
    */
   private _frozen: boolean = false;
 
-  protected _buttonValue: any = null; //このボタンに割り当てられた値
+  protected _buttonValue: T = null; //このボタンに割り当てられた値
   protected material!: ButtonMaterialSet; //状態マテリアル 状態によって表示が切り替わるもの。
 
   /*ボタンラベル*/
@@ -46,17 +46,17 @@ export class BasicClickButton extends Container {
    * ボタンに対するマウスハンドリングを開始する。
    */
   private setMouseEvents(): void {
-    this.on("pointerdown", (e: any) => {
-      this.pressButton(e as FederatedPointerEvent);
+    this.on("pointerdown", (e) => {
+      this.pressButton(e);
     });
-    this.on("pointerup", (e: any) => {
-      this.releaseButton(e as FederatedPointerEvent);
+    this.on("pointerup", (e) => {
+      this.releaseButton(e);
     });
-    this.on("pointerover", (e: any) => {
-      this.overButton(e as FederatedPointerEvent);
+    this.on("pointerover", (e) => {
+      this.overButton(e);
     });
-    this.on("pointerout", (e: any) => {
-      this.outButton(e as FederatedPointerEvent);
+    this.on("pointerout", (e) => {
+      this.outButton(e);
     });
   }
 
@@ -101,7 +101,7 @@ export class BasicClickButton extends Container {
   public pressButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
     this.isPressed = true;
-    this.updateMaterialVisible(BasicButtonState.NORMAL_DOWN);
+    this.updateMaterialVisible("normal_down");
   }
 
   /**
@@ -115,10 +115,7 @@ export class BasicClickButton extends Container {
 
     this.isPressed = false;
 
-    const state = this.isOver
-      ? BasicButtonState.NORMAL_OVER
-      : BasicButtonState.NORMAL;
-    this.updateMaterialVisible(state);
+    this.updateMaterialVisible(this.isOver ? "normal_over" : "normal");
   }
 
   /**
@@ -130,7 +127,7 @@ export class BasicClickButton extends Container {
     this.isOver = true;
 
     if (!this.checkActivity()) return;
-    this.updateMaterialVisible(BasicButtonState.NORMAL_OVER);
+    this.updateMaterialVisible("normal_over");
   }
 
   /**
@@ -143,7 +140,7 @@ export class BasicClickButton extends Container {
     this.isPressed = false;
 
     if (!this.checkActivity()) return;
-    this.updateMaterialVisible(BasicButtonState.NORMAL);
+    this.updateMaterialVisible("normal");
   }
 
   /**
@@ -152,7 +149,7 @@ export class BasicClickButton extends Container {
   public disableButton(): void {
     this.isDisable = true;
     this.updateMouseEnabled();
-    this.updateMaterialVisible(BasicButtonState.DISABLE);
+    this.updateMaterialVisible("disable");
   }
 
   /**
@@ -161,7 +158,7 @@ export class BasicClickButton extends Container {
   public enableButton(): void {
     this.isDisable = false;
     this.updateMouseEnabled();
-    this.updateMaterialVisible(BasicButtonState.NORMAL);
+    this.updateMaterialVisible("normal");
   }
 
   get frozen(): boolean {
@@ -190,8 +187,8 @@ export class BasicClickButton extends Container {
    * @returns {BasicButtonState}
    */
   public getButtonState(): BasicButtonState {
-    if (this.isDisable) return BasicButtonState.DISABLE;
-    else return BasicButtonState.NORMAL;
+    if (this.isDisable) return "disable";
+    else return "normal";
   }
 
   /**
@@ -266,10 +263,10 @@ export class BasicClickButton extends Container {
     return this._labelField[index];
   }
 
-  get buttonValue(): any {
+  get buttonValue(): T {
     return this._buttonValue;
   }
-  set buttonValue(value: any) {
+  set buttonValue(value: T) {
     if (this._buttonValue != value) {
       this._buttonValue = value;
     }

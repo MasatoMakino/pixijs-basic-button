@@ -1,11 +1,11 @@
 import { BasicClickButton } from "./BasicClickButton";
 
-export class BasicButtonContext {
+export class BasicButtonContext<T = any> {
   public index!: number;
-  public buttonValue: any = null;
-  public target: BasicClickButton;
+  public buttonValue: T = null;
+  public target: BasicClickButton<T>;
 
-  constructor(target: BasicClickButton, value: any) {
+  constructor(target: BasicClickButton<T>, value: T) {
     this.target = target;
     this.buttonValue = value;
   }

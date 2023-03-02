@@ -8,25 +8,24 @@ import { BasicClickButton } from "./BasicClickButton";
 /**
  * 選択状態を持つボタンクラス。
  */
-export class BasicCheckButton extends BasicClickButton {
-  get selectionState(): SelectionState {
+export class BasicCheckButton<T = any> extends BasicClickButton<T> {
+  get selectionState(): SelectionState<T> {
     return this._selectionState;
   }
-  protected _selectionState: SelectionState;
+  protected _selectionState: SelectionState<T>;
 
   constructor(materials?: ButtonMaterialSet) {
     super(materials);
-    this._selectionState = new SelectionState();
+    this._selectionState = new SelectionState<T>();
   }
 
   public pressButton(evt?: FederatedPointerEvent): void {
     if (!this.checkActivity()) return;
     this.isPressed = true;
 
-    const state = this._selectionState.isSelected
-      ? BasicButtonState.SELECT_DOWN
-      : BasicButtonState.NORMAL_DOWN;
-    this.updateMaterialVisible(state);
+    this.updateMaterialVisible(
+      this._selectionState.isSelected ? "select_down" : "normal_down"
+    );
   }
 
   public releaseButton(evt?: FederatedPointerEvent): void {
@@ -43,20 +42,18 @@ export class BasicCheckButton extends BasicClickButton {
     super.overButton(evt);
 
     if (!this.checkActivity()) return;
-    const state = this._selectionState.isSelected
-      ? BasicButtonState.SELECT_OVER
-      : BasicButtonState.NORMAL_OVER;
-    this.updateMaterialVisible(state);
+    this.updateMaterialVisible(
+      this._selectionState.isSelected ? "select_over" : "normal_over"
+    );
   }
 
   public outButton(evt?: FederatedPointerEvent): void {
     super.outButton(evt);
 
     if (!this.isDisable) {
-      const state = this._selectionState.isSelected
-        ? BasicButtonState.SELECT
-        : BasicButtonState.NORMAL;
-      this.updateMaterialVisible(state);
+      this.updateMaterialVisible(
+        this._selectionState.isSelected ? "select" : "normal"
+      );
     }
     if (!this.checkActivity()) return;
   }
@@ -70,10 +67,7 @@ export class BasicCheckButton extends BasicClickButton {
 
     this._selectionState.isSelected = true;
     if (!this.isDisable) {
-      const state = this.isOver
-        ? BasicButtonState.SELECT_OVER
-        : BasicButtonState.SELECT;
-      this.updateMaterialVisible(state);
+      this.updateMaterialVisible(this.isOver ? "select_over" : "select");
     }
 
     const buttonEvt = new BasicButtonContext(this, this.buttonValue);
@@ -88,10 +82,7 @@ export class BasicCheckButton extends BasicClickButton {
     if (!this._selectionState.isSelected) return;
 
     if (!this.isDisable) {
-      const state = this.isOver
-        ? BasicButtonState.NORMAL_OVER
-        : BasicButtonState.NORMAL;
-      this.updateMaterialVisible(state);
+      this.updateMaterialVisible(this.isOver ? "normal_over" : "normal");
     }
     this._selectionState.isSelected = false;
 
@@ -101,17 +92,16 @@ export class BasicCheckButton extends BasicClickButton {
 
   public enableButton(): void {
     super.enableButton();
-    const state = this._selectionState.isSelected
-      ? BasicButtonState.SELECT
-      : BasicButtonState.NORMAL;
-    this.updateMaterialVisible(state);
+    this.updateMaterialVisible(
+      this._selectionState.isSelected ? "select" : "normal"
+    );
   }
 
   public getButtonState(): BasicButtonState {
-    if (this.isDisable) return BasicButtonState.DISABLE;
+    if (this.isDisable) return "disable";
     else {
-      if (this._selectionState?.isSelected) return BasicButtonState.SELECT;
-      else return BasicButtonState.NORMAL;
+      if (this._selectionState?.isSelected) return "select";
+      else return "normal";
     }
   }
 

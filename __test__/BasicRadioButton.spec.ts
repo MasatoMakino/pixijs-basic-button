@@ -1,10 +1,11 @@
-import { BasicButtonState, BasicRadioButton } from "../src";
+import { BasicRadioButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 import { DummyPointerEvent } from "./DummyPointerEvent";
 
 describe("BasicRadioButton", () => {
   const mat = getTestMaterialSet();
-  const button = new BasicRadioButton(mat);
+  const button = new BasicRadioButton<string>(mat);
+  button.buttonValue = "test radio button value";
 
   test("constructor", () => {
     expect(button).toBeTruthy();
@@ -15,26 +16,26 @@ describe("BasicRadioButton", () => {
     resetButton(button);
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
 
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
     //多重セレクトは無視する
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
   });
 
   test("select and over", () => {
     resetButton(button);
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
 
     //セレクト中はdownできない
     button.selectButton();
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
   });
 
   test("disable", () => {
@@ -42,7 +43,7 @@ describe("BasicRadioButton", () => {
 
     button.disableButton();
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
   });
 });
 

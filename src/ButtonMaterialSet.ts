@@ -1,5 +1,5 @@
-import { BasicClickButton, BasicButtonState } from "./index";
 import { DisplayObject, Text } from "pixi.js";
+import { BasicButtonState, BasicClickButton } from "./index";
 
 class ButtonOptionSet<T> {
   normal!: T;
@@ -20,17 +20,17 @@ class ButtonOptionSet<T> {
     state: BasicButtonState
   ): T {
     switch (state) {
-      case BasicButtonState.DISABLE:
+      case "disable":
         return set.disable ?? set.normal;
-      case BasicButtonState.NORMAL_OVER:
+      case "normal_over":
         return set.over ?? set.normal;
-      case BasicButtonState.NORMAL_DOWN:
+      case "normal_down":
         return set.down ?? set.normal;
-      case BasicButtonState.SELECT:
+      case "select":
         return set.selectNormal ?? set.normal;
-      case BasicButtonState.SELECT_OVER:
+      case "select_over":
         return set.selectOver ?? set.normal;
-      case BasicButtonState.SELECT_DOWN:
+      case "select_down":
         return set.selectDown ?? set.normal;
       default:
         return set.normal;
@@ -104,11 +104,10 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
     this.getMaterial(material, state).visible = true;
 
     if (material.selectMarker) {
-      const isSelect =
-        state === BasicButtonState.SELECT ||
-        state === BasicButtonState.SELECT_OVER ||
-        state === BasicButtonState.SELECT_DOWN;
-      material.selectMarker.visible = isSelect;
+      material.selectMarker.visible =
+        state === "select" ||
+        state === "select_over" ||
+        state === "select_down";
     }
   }
 
