@@ -1,4 +1,4 @@
-import { BasicButtonState, ButtonMaterialSet } from "../src";
+import { ButtonMaterialSet } from "../src";
 import {
   getTestMaterialSet,
   getTestMaterialSetNormalOnly,
@@ -13,57 +13,45 @@ describe("ButtonMaterialSet", () => {
   });
 
   test("change state", () => {
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.NORMAL);
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.NORMAL_OVER);
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.NORMAL_DOWN);
-    testMaterialVisible(mat, BasicButtonState.NORMAL_DOWN);
+    ButtonMaterialSet.updateVisible(mat, "normal");
+    testMaterialVisible(mat, "normal");
+    ButtonMaterialSet.updateVisible(mat, "normal_over");
+    testMaterialVisible(mat, "normal_over");
+    ButtonMaterialSet.updateVisible(mat, "normal_down");
+    testMaterialVisible(mat, "normal_down");
 
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.SELECT);
-    testMaterialVisible(mat, BasicButtonState.SELECT);
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.SELECT_OVER);
-    testMaterialVisible(mat, BasicButtonState.SELECT_OVER);
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.SELECT_DOWN);
-    testMaterialVisible(mat, BasicButtonState.SELECT_DOWN);
+    ButtonMaterialSet.updateVisible(mat, "select");
+    testMaterialVisible(mat, "select");
+    ButtonMaterialSet.updateVisible(mat, "select_over");
+    testMaterialVisible(mat, "select_over");
+    ButtonMaterialSet.updateVisible(mat, "select_down");
+    testMaterialVisible(mat, "select_down");
 
-    ButtonMaterialSet.updateVisible(mat, BasicButtonState.DISABLE);
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    ButtonMaterialSet.updateVisible(mat, "disable");
+    testMaterialVisible(mat, "disable");
 
     ButtonMaterialSet.updateVisible(mat, "unexpected value" as any);
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
   });
 
   test("change state : normal only", () => {
     const matNormalOnly = getTestMaterialSetNormalOnly();
 
-    ButtonMaterialSet.updateVisible(matNormalOnly, BasicButtonState.NORMAL);
+    ButtonMaterialSet.updateVisible(matNormalOnly, "normal");
     expect(matNormalOnly.normal.visible).toBe(true);
-    ButtonMaterialSet.updateVisible(
-      matNormalOnly,
-      BasicButtonState.NORMAL_OVER
-    );
+    ButtonMaterialSet.updateVisible(matNormalOnly, "normal_over");
     expect(matNormalOnly.normal.visible).toBe(true);
-    ButtonMaterialSet.updateVisible(
-      matNormalOnly,
-      BasicButtonState.NORMAL_DOWN
-    );
+    ButtonMaterialSet.updateVisible(matNormalOnly, "normal_down");
     expect(matNormalOnly.normal.visible).toBe(true);
 
-    ButtonMaterialSet.updateVisible(matNormalOnly, BasicButtonState.DISABLE);
+    ButtonMaterialSet.updateVisible(matNormalOnly, "disable");
     expect(matNormalOnly.normal.visible).toBe(true);
 
-    ButtonMaterialSet.updateVisible(matNormalOnly, BasicButtonState.SELECT);
+    ButtonMaterialSet.updateVisible(matNormalOnly, "select");
     expect(matNormalOnly.normal.visible).toBe(true);
-    ButtonMaterialSet.updateVisible(
-      matNormalOnly,
-      BasicButtonState.SELECT_OVER
-    );
+    ButtonMaterialSet.updateVisible(matNormalOnly, "select_over");
     expect(matNormalOnly.normal.visible).toBe(true);
-    ButtonMaterialSet.updateVisible(
-      matNormalOnly,
-      BasicButtonState.SELECT_DOWN
-    );
+    ButtonMaterialSet.updateVisible(matNormalOnly, "select_down");
     expect(matNormalOnly.normal.visible).toBe(true);
   });
 });

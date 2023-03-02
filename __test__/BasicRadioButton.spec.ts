@@ -15,26 +15,26 @@ describe("BasicRadioButton", () => {
     resetButton(button);
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
 
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
     //多重セレクトは無視する
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
   });
 
   test("select and over", () => {
     resetButton(button);
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
 
     //セレクト中はdownできない
     button.selectButton();
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.SELECT);
+    testMaterialVisible(mat, "select");
   });
 
   test("disable", () => {
@@ -42,7 +42,7 @@ describe("BasicRadioButton", () => {
 
     button.disableButton();
     button.selectButton();
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
   });
 });
 

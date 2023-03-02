@@ -1,5 +1,5 @@
 import { DummyPointerEvent } from "./DummyPointerEvent";
-import { BasicButtonState, BasicClickButton } from "../src";
+import { BasicClickButton } from "../src";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicClickButton", () => {
@@ -15,15 +15,15 @@ describe("BasicClickButton", () => {
 
   test("change state : enable", () => {
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_OVER);
+    testMaterialVisible(mat, "normal_over");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.NORMAL_DOWN);
+    testMaterialVisible(mat, "normal_down");
 
     //pointerOut後にupした場合はnormal
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
   });
 
   test("change state : mouse over", () => {
@@ -38,15 +38,15 @@ describe("BasicClickButton", () => {
   test("change state : disable", () => {
     button.disableButton();
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.DISABLE);
+    testMaterialVisible(mat, "disable");
     button.enableButton();
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
   });
 
   test("change state : frozen", () => {
@@ -54,15 +54,15 @@ describe("BasicClickButton", () => {
     button.frozen = true;
 
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerover");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerout");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerdown");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
 
     button.frozen = false;
-    testMaterialVisible(mat, BasicButtonState.NORMAL);
+    testMaterialVisible(mat, "normal");
   });
 });

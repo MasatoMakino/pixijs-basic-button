@@ -56,7 +56,7 @@ describe("BasicRadioButtonManager", () => {
     resetManager(manager);
     manager.disableAll();
     manager.buttons.forEach((btn) => {
-      expect(btn.getButtonState()).toBe(BasicButtonState.DISABLE);
+      expect(btn.getButtonState()).toBe("disable");
     });
   });
 
@@ -64,7 +64,7 @@ describe("BasicRadioButtonManager", () => {
     resetManager(manager);
     manager.enableAll();
     manager.buttons.forEach((btn) => {
-      expect(btn.getButtonState()).toBe(BasicButtonState.NORMAL);
+      expect(btn.getButtonState()).toBe("normal");
     });
   });
 
