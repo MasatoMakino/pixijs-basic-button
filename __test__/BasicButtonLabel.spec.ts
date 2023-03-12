@@ -14,7 +14,7 @@ describe("BasicClickButton", () => {
 
   test("before init", () => {
     button.setLabel(Number.MAX_VALUE, "updated label");
-    expect(spyWarn).not.toBeCalled();
+    expect(spyWarn).toBeCalled();
     spyWarn.mockClear();
   });
 
