@@ -2,10 +2,11 @@ import { FederatedPointerEvent } from "pixi.js";
 import {
   BasicButtonContext,
   BasicButtonState,
-  BasicClickButton,
   ButtonMaterialSet,
   SelectionState,
 } from "./";
+//参照順序ミスが発生するため、indexではなくBasicClickButtonからインポートする。
+import { BasicClickButton } from "./BasicClickButton";
 
 /**
  * 選択状態を持つボタンクラス。
