@@ -1,5 +1,5 @@
 import { EventEmitter } from "@pixi/utils";
-import { BasicButtonContext } from "./BasicButtonContext";
+import { BasicButtonContext } from "./";
 
 export interface BasicButtonSelectionEventType<T = any> {
   selected: (e: BasicButtonContext<T>) => void;

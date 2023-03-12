@@ -1,6 +1,6 @@
 import { BasicRadioButton } from "../src";
-import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 import { DummyPointerEvent } from "./DummyPointerEvent";
+import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicRadioButton", () => {
   const mat = getTestMaterialSet();
