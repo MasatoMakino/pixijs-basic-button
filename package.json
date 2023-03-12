@@ -1,6 +1,6 @@
 {
   "name": "@masatomakino/pixijs-basic-button",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Interactive button library for pixi.js",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
