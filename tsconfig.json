@@ -12,6 +12,7 @@
     },
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "strictBindCallApply": true,
     "strictNullChecks": true
   },
   "include": ["src/**/*"]
