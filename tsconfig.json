@@ -10,6 +10,7 @@
     "paths": {
       "mini-signals": ["node_modules/resource-loader/typings/mini-signals.d.ts"]
     },
+    "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictBindCallApply": true,
