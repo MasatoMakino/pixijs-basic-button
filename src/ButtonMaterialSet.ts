@@ -78,7 +78,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
    */
   private static getMaterialArray(
     materials: ButtonMaterialSet
-  ): DisplayObject[] {
+  ): (DisplayObject | undefined)[] {
     return [
       materials.normal,
       materials.over,
@@ -97,9 +97,11 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
    * @param {BasicButtonState} state
    */
   public static updateVisible(
-    material: ButtonMaterialSet,
+    material: ButtonMaterialSet | undefined,
     state: BasicButtonState
   ): void {
+    if (material == null) return;
+
     this.invisibleAll(material);
     this.getMaterial(material, state).visible = true;
 

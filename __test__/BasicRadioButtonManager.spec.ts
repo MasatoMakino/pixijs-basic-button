@@ -13,8 +13,8 @@ describe("BasicRadioButtonManager", () => {
 
   test("constructor", () => {
     expect(manager).toBeTruthy();
-    expect(manager.selected).toBeNull();
-    expect(manager.selectedButtonValue).toBeNull();
+    expect(manager.selected).toBeUndefined();
+    expect(manager.selectedButtonValue).toBeUndefined();
   });
 
   test("select button", () => {
@@ -28,16 +28,16 @@ describe("BasicRadioButtonManager", () => {
     });
   });
 
-  test("select button : null", () => {
+  test("select button : undefined", () => {
     resetManager(manager);
     manager.selected = null;
-    expect(manager.selected).toBeNull();
+    expect(manager.selected).toBeUndefined();
   });
 
   test("select button : undefined", () => {
     resetManager(manager);
     manager.selected = undefined;
-    expect(manager.selected).toBeNull();
+    expect(manager.selected).toBeUndefined();
   });
 
   test("select button : unmanaged button", () => {
