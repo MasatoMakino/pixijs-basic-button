@@ -24,7 +24,7 @@ export class BasicRadioButtonManager<
   T = any
 > extends EventEmitter<BasicButtonSelectionEventType> {
   protected _buttons: BasicRadioButton<T>[] = [];
-  protected _selected?: BasicRadioButton<T> = null;
+  protected _selected?: BasicRadioButton<T> = undefined;
 
   /**
    * ラジオボタンのグループにボタンを追加する。
@@ -43,7 +43,7 @@ export class BasicRadioButtonManager<
    * nullを引数に取ると全ての選択を解除する。
    * @param {BasicRadioButton} selectedButton
    */
-  set selected(selectedButton: BasicRadioButton<T>) {
+  set selected(selectedButton: BasicRadioButton<T> | undefined) {
     this._selected = selectedButton;
 
     if (selectedButton == null) {
@@ -70,7 +70,7 @@ export class BasicRadioButtonManager<
    * 選択されていない場合はnullを返す。
    * @returns {BasicRadioButton | null}
    */
-  get selected(): BasicRadioButton<T> | null {
+  get selected(): BasicRadioButton<T> | undefined {
     return this._selected;
   }
 
@@ -105,12 +105,15 @@ export class BasicRadioButtonManager<
    * 管理下の全てのボタンの選択を解除する。
    */
   public deselectAllButtons(): void {
-    this._selected = null;
+    this._selected = undefined;
     for (let btn of this._buttons) {
       btn.deselectButton();
     }
 
-    const evt: BasicButtonContext = new BasicButtonContext(null, null);
+    const evt: BasicButtonContext = new BasicButtonContext(
+      undefined,
+      undefined
+    );
     this.emit("unselected", evt);
   }
 
@@ -143,12 +146,12 @@ export class BasicRadioButtonManager<
    * 選択されたボタンがない場合はnullを返す。
    * @returns {any}
    */
-  get selectedButtonValue(): any {
+  get selectedButtonValue(): T | undefined {
     const btn = this.selected;
     if (btn) {
       return btn.buttonValue;
     }
-    return null;
+    return undefined;
   }
 
   /**

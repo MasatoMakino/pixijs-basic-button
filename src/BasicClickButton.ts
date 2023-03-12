@@ -20,8 +20,8 @@ export class BasicClickButton<T = any> extends Container {
    */
   private _frozen: boolean = false;
 
-  protected _buttonValue: T = null; //このボタンに割り当てられた値
-  protected material!: ButtonMaterialSet; //状態マテリアル 状態によって表示が切り替わるもの。
+  protected _buttonValue?: T = undefined; //このボタンに割り当てられた値
+  protected material?: ButtonMaterialSet; //状態マテリアル 状態によって表示が切り替わるもの。
 
   /*ボタンラベル*/
   protected _labelField: Text[] = []; //ラベル表示用のテキストフィールド
@@ -67,7 +67,7 @@ export class BasicClickButton<T = any> extends Container {
     //すでにmaterialが設定済みの場合、以前のマテリアルを削除する。
     if (this.material) {
       ButtonMaterialSet.remove(this.material);
-      this.material = null;
+      this.material = undefined;
     }
 
     this.material = materials;
@@ -262,10 +262,10 @@ export class BasicClickButton<T = any> extends Container {
     return this._labelField[index];
   }
 
-  get buttonValue(): T {
+  get buttonValue(): T | undefined {
     return this._buttonValue;
   }
-  set buttonValue(value: T) {
+  set buttonValue(value: T | undefined) {
     if (this._buttonValue != value) {
       this._buttonValue = value;
     }
