@@ -1,5 +1,5 @@
 import { DisplayObject, Text } from "pixi.js";
-import { BasicButtonState, BasicClickButton } from "./index";
+import { BasicButtonState, BasicClickButton } from "./";
 
 class ButtonOptionSet<T> {
   normal!: T;

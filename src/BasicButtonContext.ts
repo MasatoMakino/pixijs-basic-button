@@ -1,4 +1,4 @@
-import { BasicClickButton } from "./BasicClickButton";
+import { BasicClickButton } from "./";
 
 export class BasicButtonContext<T = any> {
   public index!: number;

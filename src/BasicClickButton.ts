@@ -1,6 +1,5 @@
 import { Container, FederatedPointerEvent, Text, TextStyle } from "pixi.js";
-import { BasicButtonState } from "./BasicButtonState";
-import { ButtonLabelColorSet, ButtonMaterialSet } from "./ButtonMaterialSet";
+import { BasicButtonState, ButtonLabelColorSet, ButtonMaterialSet } from "./";
 
 /**
  * 基本ボタンクラス。

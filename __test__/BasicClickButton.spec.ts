@@ -1,5 +1,5 @@
-import { DummyPointerEvent } from "./DummyPointerEvent";
 import { BasicClickButton } from "../src";
+import { DummyPointerEvent } from "./DummyPointerEvent";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
 
 describe("BasicClickButton", () => {
