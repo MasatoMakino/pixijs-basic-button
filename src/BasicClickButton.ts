@@ -225,8 +225,8 @@ export class BasicClickButton<T = any> extends Container {
    * ボタンラベルに表示されている文言を取得する。
    * @returns {string}
    */
-  public getLabel(index): string | null {
-    if (!this._labelField) return null;
+  public getLabel(index: number): string | undefined {
+    if (!this._labelField) return undefined;
     return this._labelField[index].text;
   }
 
