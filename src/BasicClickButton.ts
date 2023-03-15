@@ -34,7 +34,7 @@ export class BasicClickButton<T = any> extends Container {
   constructor(materials?: ButtonMaterialSet) {
     super();
 
-    this.interactive = true;
+    this.eventMode = "static";
     this.cursor = "pointer";
     this.setMouseEvents();
 
@@ -170,7 +170,7 @@ export class BasicClickButton<T = any> extends Container {
   }
 
   private updateMouseEnabled() {
-    this.interactive = !this.isDisable && !this._frozen;
+    this.eventMode = !this.isDisable && !this._frozen ? "static" : "none";
   }
 
   /**
@@ -178,7 +178,7 @@ export class BasicClickButton<T = any> extends Container {
    * @return    ボタンが有効か否か
    */
   protected checkActivity(): boolean {
-    return !this.isDisable && !this._frozen && this.interactive;
+    return !this.isDisable && !this._frozen && this.eventMode !== "none";
   }
 
   /**
@@ -215,7 +215,7 @@ export class BasicClickButton<T = any> extends Container {
     field.x = x;
     field.y = y;
     field.cacheAsBitmap = true;
-    field.interactive = field.interactiveChildren = false;
+    field.eventMode = "none";
 
     this.addChild(field);
     return this._labelField.indexOf(field);
