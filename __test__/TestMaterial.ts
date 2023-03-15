@@ -50,6 +50,7 @@ function getRect(color: number, alpha: number = 1.0): DisplayObject {
 
 export function getTestLabelColorSet() {
   const mat = new ButtonLabelColorSet();
+  mat.normal = TestMaterialColor.normal;
   mat.down = TestMaterialColor.down;
   mat.over = TestMaterialColor.over;
   mat.disable = TestMaterialColor.disable;

@@ -30,12 +30,6 @@ describe("BasicRadioButtonManager", () => {
 
   test("select button : undefined", () => {
     resetManager(manager);
-    manager.selected = null;
-    expect(manager.selected).toBeUndefined();
-  });
-
-  test("select button : undefined", () => {
-    resetManager(manager);
     manager.selected = undefined;
     expect(manager.selected).toBeUndefined();
   });
@@ -68,7 +62,7 @@ describe("BasicRadioButtonManager", () => {
     resetManager(manager);
     manager.disableMouseAll();
     manager.buttons.forEach((btn) => {
-      expect(btn.interactive).toBe(false);
+      expect(btn.eventMode).toBe("none");
     });
   });
 
@@ -76,7 +70,7 @@ describe("BasicRadioButtonManager", () => {
     resetManager(manager);
     manager.enableMouseAll();
     manager.buttons.forEach((btn) => {
-      expect(btn.interactive).toBe(true);
+      expect(btn.eventMode).toBe("static");
     });
   });
 
