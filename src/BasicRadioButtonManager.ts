@@ -125,7 +125,7 @@ export class BasicRadioButtonManager<
 
   public disableMouseAll(): void {
     for (let btn of this._buttons) {
-      btn.interactive = false;
+      btn.eventMode = "none";
     }
   }
 
@@ -137,7 +137,7 @@ export class BasicRadioButtonManager<
 
   public enableMouseAll(): void {
     for (let btn of this._buttons) {
-      btn.interactive = true;
+      btn.eventMode = "static";
     }
   }
 
