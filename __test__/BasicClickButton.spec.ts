@@ -33,7 +33,7 @@ describe("BasicClickButton", () => {
     //pointerOver中にupした場合はover
     DummyPointerEvent.emitDummyPointerEvent(button, "pointerup");
     expect(mat.normal.visible).toBe(false);
-    expect(mat.over.visible).toBe(true);
+    expect(mat.over?.visible).toBe(true);
   });
 
   test("change state : disable", () => {
