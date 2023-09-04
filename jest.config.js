@@ -1,9 +1,9 @@
 const { defaults } = require("jest-config");
 
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom",
   transform: {
-    "^.+\\.(t|j)sx?$": "@swc/jest",
+    "^.+\\.(t|j)sx?$": "ts-jest",
   },
   coveragePathIgnorePatterns: [
     ...defaults.coveragePathIgnorePatterns,
