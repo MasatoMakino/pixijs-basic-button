@@ -1,5 +1,9 @@
 import { FederatedPointerEvent } from "pixi.js";
-import { BasicButtonContext, BasicCheckButton, ButtonMaterialSet } from "./";
+import {
+  BasicButtonContext,
+  BasicCheckButton,
+  ButtonMaterialSet,
+} from "./index.js";
 
 /**
  * 排他的に選択可能なボタン。ラジオボタンのセットはBasicRadioButtonManagerで設定する。

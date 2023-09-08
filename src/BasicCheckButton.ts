@@ -4,9 +4,9 @@ import {
   BasicButtonState,
   ButtonMaterialSet,
   SelectionState,
-} from "./";
+} from "./index.js";
 //参照順序ミスが発生するため、indexではなくBasicClickButtonからインポートする。
-import { BasicClickButton } from "./BasicClickButton";
+import { BasicClickButton } from "./BasicClickButton.js";
 
 /**
  * 選択状態を持つボタンクラス。
@@ -27,7 +27,7 @@ export class BasicCheckButton<T = any> extends BasicClickButton<T> {
     this.isPressed = true;
 
     this.updateMaterialVisible(
-      this._selectionState.isSelected ? "select_down" : "normal_down"
+      this._selectionState.isSelected ? "select_down" : "normal_down",
     );
   }
 
@@ -46,7 +46,7 @@ export class BasicCheckButton<T = any> extends BasicClickButton<T> {
 
     if (!this.checkActivity()) return;
     this.updateMaterialVisible(
-      this._selectionState.isSelected ? "select_over" : "normal_over"
+      this._selectionState.isSelected ? "select_over" : "normal_over",
     );
   }
 
@@ -55,7 +55,7 @@ export class BasicCheckButton<T = any> extends BasicClickButton<T> {
 
     if (!this.isDisable) {
       this.updateMaterialVisible(
-        this._selectionState.isSelected ? "select" : "normal"
+        this._selectionState.isSelected ? "select" : "normal",
       );
     }
     if (!this.checkActivity()) return;
@@ -96,7 +96,7 @@ export class BasicCheckButton<T = any> extends BasicClickButton<T> {
   public enableButton(): void {
     super.enableButton();
     this.updateMaterialVisible(
-      this._selectionState.isSelected ? "select" : "normal"
+      this._selectionState.isSelected ? "select" : "normal",
     );
   }
 

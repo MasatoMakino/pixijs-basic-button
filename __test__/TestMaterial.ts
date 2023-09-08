@@ -3,7 +3,7 @@ import {
   BasicButtonState,
   ButtonLabelColorSet,
   ButtonMaterialSet,
-} from "../src";
+} from "../src/index.js";
 
 /**
  * テスト用の共通マテリアルを生成する
@@ -63,7 +63,7 @@ export function getTestLabelColorSet() {
 }
 export function testMaterialVisible(
   mat: ButtonMaterialSet,
-  state: BasicButtonState
+  state: BasicButtonState,
 ): void {
   expect(mat.normal.visible).toBe(state === "normal");
   expect(mat.over?.visible).toBe(state === "normal_over");

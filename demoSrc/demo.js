@@ -3,7 +3,7 @@ import {
   BasicClickButton,
   BasicCheckButton,
   BasicRadioButtonManager,
-} from "..";
+} from "../esm/index.js";
 import { Application, Graphics } from "pixi.js";
 
 /**
@@ -117,7 +117,7 @@ const addLabel = (btn) => {
       selectNormal: 0xffff33,
       selectOver: 0x00ff00,
       selectDown: 0x999999,
-    }
+    },
   );
 };
 

@@ -1,6 +1,6 @@
 import { TextStyle } from "pixi.js";
-import { BasicClickButton } from "../src";
-import { getTestLabelColorSet, getTestMaterialSet } from "./TestMaterial";
+import { BasicClickButton } from "../src/index.js";
+import { getTestLabelColorSet, getTestMaterialSet } from "./TestMaterial.js";
 
 describe("BasicClickButton", () => {
   const mat = getTestMaterialSet();
