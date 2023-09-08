@@ -1,5 +1,9 @@
 import { Container, FederatedPointerEvent, Text, TextStyle } from "pixi.js";
-import { BasicButtonState, ButtonLabelColorSet, ButtonMaterialSet } from "./";
+import {
+  BasicButtonState,
+  ButtonLabelColorSet,
+  ButtonMaterialSet,
+} from "./index.js";
 
 /**
  * 基本ボタンクラス。
@@ -204,7 +208,7 @@ export class BasicClickButton<T = any> extends Container {
     y: number,
     label: string,
     style: TextStyle,
-    color: ButtonLabelColorSet
+    color: ButtonLabelColorSet,
   ): number {
     this.labelColors.push(color);
     style.fill = color.normal;
@@ -240,14 +244,14 @@ export class BasicClickButton<T = any> extends Container {
       console.warn(
         "BasicButton : " +
           "ボタンラベルが初期化されていませんが、ラベルの文言が指定されました。" +
-          "文言を指定する前にラベルの初期化をaddLabel関数で行ってください。"
+          "文言を指定する前にラベルの初期化をaddLabel関数で行ってください。",
       );
       return;
     }
 
     if (this._labelField[index] === undefined) {
       console.warn(
-        "BasicButton : " + `指定されたindex : ${index}にラベルが存在しません。`
+        "BasicButton : " + `指定されたindex : ${index}にラベルが存在しません。`,
       );
       return;
     }

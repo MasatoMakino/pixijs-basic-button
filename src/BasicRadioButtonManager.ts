@@ -3,7 +3,7 @@ import {
   BasicButtonContext,
   BasicButtonSelectionEventType,
   BasicRadioButton,
-} from "./";
+} from "./index.js";
 
 /**
  * 排他的に選択されるボタンを制御するクラスです。
@@ -21,7 +21,7 @@ import {
  */
 
 export class BasicRadioButtonManager<
-  T = any
+  T = any,
 > extends EventEmitter<BasicButtonSelectionEventType> {
   protected _buttons: BasicRadioButton<T>[] = [];
   protected _selected?: BasicRadioButton<T> = undefined;
@@ -57,7 +57,7 @@ export class BasicRadioButtonManager<
       console.warn(
         "BasicRadioButtonManager : " +
           "選択対象として指定されたボタンが、BasicRadioButtonManagerの管理下にありません。" +
-          "指定を行う前にaddButton関数でボタンをBasicRadioButtonManagerに登録してください。"
+          "指定を行う前にaddButton関数でボタンをBasicRadioButtonManagerに登録してください。",
       );
       return;
     }
@@ -81,7 +81,7 @@ export class BasicRadioButtonManager<
    */
   protected deselectOthers(
     selectedButton: BasicRadioButton<T>,
-    isDispatchSelectEvent: boolean = true
+    isDispatchSelectEvent: boolean = true,
   ): void {
     this._selected = selectedButton;
 
@@ -94,7 +94,7 @@ export class BasicRadioButtonManager<
     if (isDispatchSelectEvent) {
       const evt: BasicButtonContext<T> = new BasicButtonContext(
         this._selected,
-        this._selected.buttonValue
+        this._selected.buttonValue,
       );
       evt.index = this._buttons.indexOf(this._selected);
       this.emit("selected", evt);
@@ -112,7 +112,7 @@ export class BasicRadioButtonManager<
 
     const evt: BasicButtonContext = new BasicButtonContext(
       undefined,
-      undefined
+      undefined,
     );
     this.emit("unselected", evt);
   }

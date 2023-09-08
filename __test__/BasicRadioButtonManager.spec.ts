@@ -1,5 +1,5 @@
-import { BasicRadioButton, BasicRadioButtonManager } from "../src";
-import { getTestMaterialSet } from "./TestMaterial";
+import { BasicRadioButton, BasicRadioButtonManager } from "../src/index.js";
+import { getTestMaterialSet } from "./TestMaterial.js";
 
 describe("BasicRadioButtonManager", () => {
   const spyWarn = jest.spyOn(console, "warn");

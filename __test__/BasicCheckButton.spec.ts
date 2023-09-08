@@ -1,6 +1,6 @@
-import { BasicCheckButton } from "../src";
-import { DummyPointerEvent } from "./DummyPointerEvent";
-import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial";
+import { BasicCheckButton } from "../src/index.js";
+import { DummyPointerEvent } from "./DummyPointerEvent.js";
+import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial.js";
 
 describe("BasicCheckButton", () => {
   const mat = getTestMaterialSet();

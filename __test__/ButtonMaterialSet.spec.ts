@@ -1,9 +1,9 @@
-import { ButtonMaterialSet } from "../src";
+import { ButtonMaterialSet } from "../src/index.js";
 import {
   getTestMaterialSet,
   getTestMaterialSetNormalOnly,
   testMaterialVisible,
-} from "./TestMaterial";
+} from "./TestMaterial.js";
 
 describe("ButtonMaterialSet", () => {
   const mat = getTestMaterialSet();

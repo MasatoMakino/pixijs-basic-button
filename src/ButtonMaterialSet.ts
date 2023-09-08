@@ -1,5 +1,5 @@
 import { DisplayObject, Text } from "pixi.js";
-import { BasicButtonState, BasicClickButton } from "./";
+import { BasicButtonState, BasicClickButton } from "./index.js";
 
 class ButtonOptionSet<T> {
   normal!: T;
@@ -17,7 +17,7 @@ class ButtonOptionSet<T> {
    */
   public static getMaterial<T>(
     set: ButtonOptionSet<T>,
-    state: BasicButtonState
+    state: BasicButtonState,
   ): T {
     switch (state) {
       case "disable":
@@ -51,7 +51,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
    */
   public static addChild(
     button: BasicClickButton,
-    material: ButtonMaterialSet
+    material: ButtonMaterialSet,
   ): void {
     this.remove(material);
     const materials = this.getMaterialArray(material);
@@ -77,7 +77,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
    * @returns {DisplayObject[]}
    */
   private static getMaterialArray(
-    materials: ButtonMaterialSet
+    materials: ButtonMaterialSet,
   ): (DisplayObject | undefined)[] {
     return [
       materials.normal,
@@ -98,7 +98,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
    */
   public static updateVisible(
     material: ButtonMaterialSet | undefined,
-    state: BasicButtonState
+    state: BasicButtonState,
   ): void {
     if (material == null) return;
 
@@ -139,7 +139,7 @@ export class ButtonLabelColorSet extends ButtonOptionSet<number> {
   public static update(
     field: Text,
     colors: ButtonLabelColorSet,
-    state: BasicButtonState
+    state: BasicButtonState,
   ): void {
     if (field == null) return;
     field.style.fill = this.getMaterial(colors, state);
