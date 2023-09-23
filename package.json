@@ -8,6 +8,10 @@
       "import": {
         "types": "./esm/index.d.ts",
         "default": "./esm/index.js"
+      },
+      "default": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
       }
     }
   },
@@ -25,7 +29,7 @@
     "@masatomakino/gulptask-demo-page": "^0.7.0",
     "@types/jest": "^29.4.1",
     "browser-sync": "^2.28.3",
-    "canvas": "^2.11.0",
+    "canvas": "^2.11.2",
     "husky": "^8.0.3",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
