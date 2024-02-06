@@ -1,3 +1,4 @@
+import { describe, test, expect, vi } from "vitest";
 import { TextStyle } from "pixi.js";
 import { BasicClickButton } from "../src/index.js";
 import { getTestLabelColorSet, getTestMaterialSet } from "./TestMaterial.js";
@@ -9,7 +10,7 @@ describe("BasicClickButton", () => {
 
   let index: number;
 
-  const spyWarn = jest.spyOn(console, "warn");
+  const spyWarn = vi.spyOn(console, "warn");
   spyWarn.mockImplementation((x) => x);
 
   test("before init", () => {

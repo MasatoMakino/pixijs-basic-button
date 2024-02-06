@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { BasicClickButton } from "../src/index.js";
 import { DummyPointerEvent } from "./DummyPointerEvent.js";
 import { getTestMaterialSet, testMaterialVisible } from "./TestMaterial.js";

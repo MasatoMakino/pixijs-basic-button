@@ -1,3 +1,4 @@
+import { expect } from "vitest";
 import { DisplayObject, Graphics } from "pixi.js";
 import {
   BasicButtonState,

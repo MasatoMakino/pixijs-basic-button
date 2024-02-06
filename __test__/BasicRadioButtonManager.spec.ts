@@ -1,8 +1,9 @@
+import { describe, test, expect, vi } from "vitest";
 import { BasicRadioButton, BasicRadioButtonManager } from "../src/index.js";
 import { getTestMaterialSet } from "./TestMaterial.js";
 
 describe("BasicRadioButtonManager", () => {
-  const spyWarn = jest.spyOn(console, "warn");
+  const spyWarn = vi.spyOn(console, "warn");
   spyWarn.mockImplementation((x) => x);
 
   const values = [0, "", null, { x: 0 }, undefined];
