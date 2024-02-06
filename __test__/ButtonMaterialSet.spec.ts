@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { ButtonMaterialSet } from "../src/index.js";
 import {
   getTestMaterialSet,
