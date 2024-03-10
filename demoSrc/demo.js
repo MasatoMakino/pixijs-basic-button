@@ -95,7 +95,6 @@ const getMaterialSet = (hasMarker = false) => {
     selectDown: getRect(0x333333),
   };
   if (hasMarker) {
-    console.log(hasMarker);
     mat.selectMarker = getMarker();
   }
   return mat;
