@@ -1,5 +1,5 @@
 import { expect } from "vitest";
-import { DisplayObject, Graphics } from "pixi.js";
+import { Container, Graphics } from "pixi.js";
 import {
   BasicButtonState,
   ButtonLabelColorSet,
@@ -42,11 +42,8 @@ export function getTestMaterialSet() {
   return mat;
 }
 
-function getRect(color: number, alpha: number = 1.0): DisplayObject {
-  const g = new Graphics();
-  g.beginFill(color).drawRect(0, 0, 128, 32).endFill();
-  g.alpha = alpha;
-  return g;
+function getRect(color: number, alpha: number = 1.0): Graphics {
+  return new Graphics().rect(0, 0, 128, 32).fill({ color, alpha });
 }
 
 export function getTestLabelColorSet() {

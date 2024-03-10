@@ -1,4 +1,4 @@
-import { DisplayObject, DisplayObjectEvents } from "pixi.js";
+import { Container, ContainerEvents } from "pixi.js";
 
 export class DummyPointerEvent {
   static generate() {
@@ -18,8 +18,8 @@ export class DummyPointerEvent {
   }
 
   static emitDummyPointerEvent(
-    button: DisplayObject,
-    type: keyof DisplayObjectEvents
+    button: Container,
+    type: keyof ContainerEvents,
   ): void {
     button.emit(type, { type } as any);
   }
