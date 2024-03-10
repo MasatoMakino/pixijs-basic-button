@@ -1,4 +1,4 @@
-import { DisplayObject, Text } from "pixi.js";
+import { Container, Text } from "pixi.js";
 import { BasicButtonState, BasicClickButton } from "./index.js";
 
 class ButtonOptionSet<T> {
@@ -41,8 +41,8 @@ class ButtonOptionSet<T> {
 /**
  * ボタンの状態に応じて表示されるDisplayObjectを格納するクラス。
  */
-export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
-  selectMarker?: DisplayObject;
+export class ButtonMaterialSet extends ButtonOptionSet<Container> {
+  selectMarker?: Container;
 
   /**
    * ボタン上に状態パーツを配置する
@@ -78,7 +78,7 @@ export class ButtonMaterialSet extends ButtonOptionSet<DisplayObject> {
    */
   private static getMaterialArray(
     materials: ButtonMaterialSet,
-  ): (DisplayObject | undefined)[] {
+  ): (Container | undefined)[] {
     return [
       materials.normal,
       materials.over,
@@ -143,9 +143,5 @@ export class ButtonLabelColorSet extends ButtonOptionSet<number> {
   ): void {
     if (field == null) return;
     field.style.fill = this.getMaterial(colors, state);
-    if (field.cacheAsBitmap) {
-      field.cacheAsBitmap = false;
-      field.cacheAsBitmap = true;
-    }
   }
 }

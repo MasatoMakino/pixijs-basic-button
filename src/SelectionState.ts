@@ -1,4 +1,4 @@
-import { EventEmitter } from "@pixi/utils";
+import { EventEmitter } from "pixi.js";
 import { BasicButtonContext } from "./index.js";
 
 export interface BasicButtonSelectionEventType<T = any> {

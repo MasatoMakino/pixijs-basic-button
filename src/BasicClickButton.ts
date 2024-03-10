@@ -214,11 +214,10 @@ export class BasicClickButton<T = any> extends Container {
     style.fill = color.normal;
     style.textBaseline = "ideographic";
 
-    const field = new Text(label, style);
+    const field = new Text({ text: label, style: style });
     this._labelField.push(field);
     field.x = x;
     field.y = y;
-    field.cacheAsBitmap = true;
     field.eventMode = "none";
 
     this.addChild(field);

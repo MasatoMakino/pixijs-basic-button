@@ -42,8 +42,11 @@ import { BasicClickButton } from "@masatomakino/pixijs-basic-button";
 ### Add to stage
 
 ```js
+import { Assets, Sprite } form "pixi.js"
+
+await Assets.load(bitmapURL);
 const button = new BasicClickButton({
-  normal: new PIXI.Sprite(Texture.from(bitmapURL)),
+  normal: Sprite.form(bitmapURL),
 });
 stage.addChild(button);
 ```
