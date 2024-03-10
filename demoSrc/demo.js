@@ -4,15 +4,18 @@ import {
   BasicCheckButton,
   BasicRadioButtonManager,
 } from "../esm/index.js";
-import { Application, Graphics } from "pixi.js";
+import { Application, Graphics, sayHello } from "pixi.js";
 
 /**
  * DOMContentLoaded後の初期化処理。
  * デモに必要なパーツを一式初期化する。
  */
-const onDomContentsLoaded = () => {
-  const app = new Application({ width: 800, height: 600 });
-  document.body.appendChild(app.view);
+const onDomContentsLoaded = async () => {
+  const app = new Application();
+  await app.init({ width: 800, height: 600 });
+  document.body.appendChild(app.canvas);
+
+  sayHello(app.renderer.name);
 
   initButton(app.stage);
   initCheckButton(app.stage);
@@ -99,9 +102,7 @@ const getMaterialSet = (hasMarker = false) => {
 };
 
 const getRect = (color) => {
-  const gra = new Graphics();
-  gra.beginFill(color).drawRect(0, 0, 128, 32).endFill();
-  return gra;
+  return new Graphics().rect(0, 0, 128, 32).fill(color);
 };
 
 const addLabel = (btn) => {
@@ -122,9 +123,7 @@ const addLabel = (btn) => {
 };
 
 const getMarker = () => {
-  const g = new Graphics();
-  g.beginFill(0xff0000).drawCircle(0, 0, 8).endFill();
-  return g;
+  return new Graphics().circle(0, 0, 8).fill(0xff0000);
 };
 
 /**
