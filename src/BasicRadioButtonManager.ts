@@ -1,4 +1,4 @@
-import { EventEmitter } from "@pixi/utils";
+import { EventEmitter } from "pixi.js";
 import {
   BasicButtonContext,
   BasicButtonSelectionEventType,
@@ -14,8 +14,8 @@ import {
  *
  * 利用する際には以下のような手順でインスタンス化してください。
  *
- * let btn:BasicRadioButton = new BasicRadioButton(...);
- * let manager:BasicRadioButtonManager = new BasicRadioButtonManager(); //インスタンス化
+ * const btn:BasicRadioButton = new BasicRadioButton(...);
+ * const manager:BasicRadioButtonManager = new BasicRadioButtonManager(); //インスタンス化
  * manager.addButton(btn);
  * manager.selected = btn; //デフォルトで選択されているボタンを指定
  */
