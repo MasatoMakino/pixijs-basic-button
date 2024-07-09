@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from "vitest";
-import { TextStyle } from "pixi.js";
+import { TextStyle, TextStyleOptions } from "pixi.js";
 import { BasicClickButton } from "../src/index.js";
 import { getTestLabelColorSet, getTestMaterialSet } from "./TestMaterial.js";
 
@@ -21,6 +21,11 @@ describe("BasicClickButton", () => {
 
   test("init label", () => {
     index = button.addLabel(0, 0, "test", new TextStyle(), labelColor);
+    expect(button.getLabel(index)).toBeTruthy();
+  });
+
+  test("init label with options", () => {
+    index = button.addLabel(0, 0, "test", { fill: 0xff0000 }, labelColor);
     expect(button.getLabel(index)).toBeTruthy();
   });
 

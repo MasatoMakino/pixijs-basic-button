@@ -1,4 +1,9 @@
-import { Container, FederatedPointerEvent, Text, TextStyle } from "pixi.js";
+import {
+  Container,
+  FederatedPointerEvent,
+  Text,
+  TextStyleOptions,
+} from "pixi.js";
 import {
   BasicButtonState,
   ButtonLabelColorSet,
@@ -207,7 +212,7 @@ export class BasicClickButton<T = any> extends Container {
     x: number,
     y: number,
     label: string,
-    style: TextStyle,
+    style: TextStyleOptions,
     color: ButtonLabelColorSet,
   ): number {
     this.labelColors.push(color);
