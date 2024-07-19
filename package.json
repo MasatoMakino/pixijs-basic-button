@@ -27,8 +27,8 @@
   "license": "MIT",
   "devDependencies": {
     "@masatomakino/gulptask-demo-page": "^0.8.0",
-    "@vitest/coverage-istanbul": "^1.2.2",
-    "@vitest/web-worker": "^1.2.2",
+    "@vitest/coverage-istanbul": "^2.0.3",
+    "@vitest/web-worker": "^2.0.3",
     "browser-sync": "^3.0.2",
     "canvas": "^2.11.2",
     "husky": "^9.0.10",
@@ -37,8 +37,7 @@
     "prettier": "^3.0.1",
     "prettier-plugin-organize-imports": "^4.0.0",
     "typedoc": "^0.26.2",
-    "typescript": "^5.4.1",
-    "vitest": "^1.2.2"
+    "typescript": "^5.4.1"
   },
   "peerDependencies": {
     "pixi.js": "^8.0.4"
