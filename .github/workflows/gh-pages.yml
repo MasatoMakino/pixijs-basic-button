@@ -9,7 +9,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-22.04
-    if: github.event.pull_request.merged == true
     permissions:
       contents: write
     steps:
