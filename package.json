@@ -37,7 +37,7 @@
     "prettier-plugin-organize-imports": "^4.0.0",
     "typedoc": "^0.26.2",
     "typescript": "^5.4.1",
-    "webdriverio": "^8.39.1"
+    "webdriverio": "^9.0.1"
   },
   "peerDependencies": {
     "pixi.js": "^8.0.4"
