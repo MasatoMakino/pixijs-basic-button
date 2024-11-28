@@ -19,7 +19,7 @@ export class DummyPointerEvent {
 
   static emitDummyPointerEvent(
     button: Container,
-    type: keyof ContainerEvents,
+    type: keyof ContainerEvents<Container>,
   ): void {
     button.emit(type, { type } as any);
   }
