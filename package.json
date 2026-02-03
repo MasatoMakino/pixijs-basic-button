@@ -29,7 +29,6 @@
     "@masatomakino/gulptask-demo-page": "^0.10.0",
     "@vitest/browser-webdriverio": "^4.0.0",
     "@vitest/coverage-istanbul": "^4.0.0",
-    "browser-sync": "^3.0.2",
     "pixi.js": "^8.2.5",
     "prettier": "^3.0.1",
     "prettier-plugin-organize-imports": "^4.0.0",
@@ -52,7 +51,7 @@
     "demo": "npx @masatomakino/gulptask-demo-page  --compileModule es2020",
     "buildTS": "tsc",
     "typedocs": "typedoc --out ./docs/api src/index.ts",
-    "server": "browser-sync ./docs/demo -w --port 3000 --no-open",
+    "server": "vite --config vite.config.ts",
     "watch:demo": "npm run demo -- -W",
     "watch:tsc": "tsc -W --incremental"
   },
