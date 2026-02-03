@@ -3,9 +3,9 @@
 > Interactive button library for pixi.js
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@masatomakino/pixijs-basic-button.svg?style=flat)](https://www.npmjs.com/package/@masatomakino/pixijs-basic-button)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github&style=flat)](https://github.com/MasatoMakino/pixijs-basic-button)
 [![CI](https://github.com/MasatoMakino/pixijs-basic-button/actions/workflows/ci_main.yml/badge.svg)](https://github.com/MasatoMakino/pixijs-basic-button/actions/workflows/ci_main.yml)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=MasatoMakino&repo=pixijs-basic-button)](https://github.com/MasatoMakino/pixijs-basic-button)
 
 ## Demo
 
@@ -40,11 +40,11 @@ import { BasicClickButton } from "@masatomakino/pixijs-basic-button";
 ### Add to stage
 
 ```js
-import { Assets, Sprite } form "pixi.js"
+import { Assets, Sprite } from "pixi.js";
 
 await Assets.load(bitmapURL);
 const button = new BasicClickButton({
-  normal: Sprite.form(bitmapURL),
+  normal: Sprite.from(bitmapURL),
 });
 stage.addChild(button);
 ```
