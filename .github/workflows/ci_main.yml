@@ -28,4 +28,4 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y xvfb
       - run: npm ci
       - run: npm run buildTS
-      - run: npm run test:ci
+      - run: npm run test

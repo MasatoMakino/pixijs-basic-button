@@ -40,12 +40,10 @@
     "pixi.js": "^8.0.4"
   },
   "scripts": {
-    "test": "vitest --run",
-    "coverage": "vitest --coverage --run",
+    "test": "xvfb-run --auto-servernum vitest --run",
+    "coverage": "xvfb-run --auto-servernum vitest --coverage --run",
     "pre-commit": "prettier --write --ignore-unknown",
-    "pre-push": "xvfb-run --auto-servernum vitest --run",
-    "test:ci": "xvfb-run --auto-servernum vitest --run",
-    "coverage:ci": "xvfb-run --auto-servernum vitest --coverage --run",
+    "pre-push": "npm run test",
     "start:dev": "npm run server & npm run watch:tsc & npm run watch:demo",
     "build": "npm run buildTS && npm run demo && npm run typedocs",
     "demo": "npx @masatomakino/gulptask-demo-page  --compileModule es2020",
