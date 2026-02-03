@@ -4,27 +4,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
+All npm commands run inside DevContainer for supply chain security.
+
 ```bash
 # Build TypeScript
-npm run buildTS
+devcontainer exec --workspace-folder . npm run buildTS
 
 # Run tests (browser-based via Vitest + WebDriverIO)
-npm test
+devcontainer exec --workspace-folder . npm run test:ci
 
 # Run single test file
-npx vitest --run __test__/BasicClickButton.spec.ts
+devcontainer exec --workspace-folder . npx vitest --run __test__/BasicClickButton.spec.ts
 
 # Run tests with coverage
-npm run coverage
+devcontainer exec --workspace-folder . npm run coverage:ci
 
 # Start development server (watch mode)
-npm run start:dev
+devcontainer exec --workspace-folder . npm run start:dev
 
 # Build all (TypeScript + demo + API docs)
-npm run build
+devcontainer exec --workspace-folder . npm run build
 
-# Format code (via lint-staged/Prettier on commit)
-npx prettier --write "src/**/*.ts"
+# Format code
+devcontainer exec --workspace-folder . npx prettier --write "src/**/*.ts"
+
+# Check assigned host port for dev server
+docker port $(docker ps -q --filter name=-npm-runner)
 ```
 
 ## Architecture
