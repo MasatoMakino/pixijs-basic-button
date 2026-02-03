@@ -33,7 +33,7 @@ This is a TypeScript library providing interactive button components for pixi.js
 
 ### Button Class Hierarchy
 
-```
+```text
 BasicClickButton<T>          # Base class - stateless click button
     └── BasicCheckButton<T>  # Toggle button with selection state
             └── BasicRadioButton<T>  # Mutually exclusive selection
