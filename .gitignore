@@ -106,3 +106,9 @@ dist
 docs/
 lib/
 esm/
+
+# 1Password CLI Directory scope config
+.op/
+
+# Claude Code local settings
+.claude/settings.local.json
