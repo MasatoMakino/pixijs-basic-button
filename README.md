@@ -15,17 +15,11 @@
 
 ### Install
 
-pixijs-basic-button depend on [pixi.js](https://github.com/pixijs/pixi.js)
-
-```bash
-npm install pixi.js --save-dev
-```
-
-and
-
 ```bash
 npm install @masatomakino/pixijs-basic-button --save-dev
 ```
+
+[pixi.js](https://github.com/pixijs/pixi.js) will be installed automatically as a peer dependency.
 
 ### Import
 
