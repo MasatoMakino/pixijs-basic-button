@@ -11,13 +11,13 @@ All npm commands run inside DevContainer for supply chain security.
 devcontainer exec --workspace-folder . npm run buildTS
 
 # Run tests (browser-based via Vitest + WebDriverIO)
-devcontainer exec --workspace-folder . npm run test:ci
+devcontainer exec --workspace-folder . npm run test
 
 # Run single test file
 devcontainer exec --workspace-folder . npx vitest --run __test__/BasicClickButton.spec.ts
 
 # Run tests with coverage
-devcontainer exec --workspace-folder . npm run coverage:ci
+devcontainer exec --workspace-folder . npm run coverage
 
 # Start development server (watch mode)
 devcontainer exec --workspace-folder . npm run start:dev

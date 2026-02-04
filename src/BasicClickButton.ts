@@ -13,10 +13,6 @@ import {
 /**
  * 基本ボタンクラス。
  * 選択状態を持たず、クリックした時点で結果が反映されるタイプのボタンです。
- *
- * 正常動作のために、stageにenableMouseOverを実行する必要があります。
- * stageのインスタンス化のタイミングで実行してください。
- *  stage.enableMouseOver();
  */
 
 export class BasicClickButton<T = any> extends Container {
