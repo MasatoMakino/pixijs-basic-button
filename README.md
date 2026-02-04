@@ -24,7 +24,7 @@ npm install pixi.js --save-dev
 and
 
 ```bash
-npm install @masatomakino/pixijs-basic-button.git --save-dev
+npm install @masatomakino/pixijs-basic-button --save-dev
 ```
 
 ### Import
